@@ -10,6 +10,7 @@ function EditMenu(props) {
     const [price, setPrice] = useState("")
      var [isClicked, setIsClicked] = useState(false);
      const [selectedFile, setSelectedFile] = useState();
+     const [selectedModel, setSelectedModel] = useState();
      const data = ""
    
      
@@ -52,26 +53,26 @@ useEffect(() => {
 
   
 
-function changeHandler(event){
+function changeHandler1(event){
   event.preventDefault()
   if (event.target.files.length !== 0)  {
-//   const reader = new FileReader();
-//   reader.onload = (e) => {
-// data = e.result
-// console.log(data);
-//   }
+
   
- getBase64(event.target.files[0])
+ getBase64one(event.target.files[0])
+
+}
+}
+function changeHandler2(event){
+  event.preventDefault()
+  if (event.target.files.length !== 0)  {
+
+  
+ getBase64two(event.target.files[0])
 
 }
 
-
-
-
-
-
 }
-function getBase64(file) {
+function getBase64one(file) {
   
 
   var reader = new FileReader();
@@ -84,6 +85,24 @@ function getBase64(file) {
  result
     }
     setSelectedFile(img)
+  };
+  reader.onerror = function (error) {
+    console.log('Error: ', error);
+  };
+}
+function getBase64two(file) {
+  
+
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    let result = reader.result
+    console.log(reader.result);
+    const img = {
+      preview: URL.createObjectURL(file),
+ result
+    }
+    setSelectedModel(img)
   };
   reader.onerror = function (error) {
     console.log('Error: ', error);
@@ -157,8 +176,11 @@ function setMenu(menuArray) {
           onChange={(e) => setPrice(e.target.value)}
         />
       </label>
-  <label>Select image file
-  <input  className="margin-left" type="file" name="file" onChange={changeHandler} />
+  <label>Select 3d model file
+  <input  className="margin-left" type="file" name="file" onChange={changeHandler2} />
+  </label>
+  <label>Select thumbnail image file
+  <input  className="margin-left" type="file" name="file" onChange={changeHandler1} />
   </label>
  
     </form>
@@ -191,7 +213,7 @@ handleClick()
  
         </div>
         <div className="to-retaurant-app-menu-div">
-        <Menu isRedBorder={true} mealName={mealName} bodyText={bodyText} image={selectedFile} price={Number(price)} section={sectionName} add={isClicked}  set={setMenu}  func={pull_data}/>
+        <Menu isRedBorder={true} mealName={mealName} bodyText={bodyText} image={selectedFile} model={selectedModel} price={Number(price)} section={sectionName} add={isClicked}  set={setMenu}  func={pull_data}/>
         </div>
         <div>
 </div>

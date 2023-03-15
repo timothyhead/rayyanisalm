@@ -12,7 +12,8 @@ function Menu(props) {
     const [popularItems, setPopularItems] = useState([{ menuItem:  [],
         detail: [], 
         sectionName: "",
-        image: String
+        image: String,
+        model: String
         }]);
     const [coldDishes, setcoldDishes] = useState([{ menuItem:  [],
         detail: [], 
@@ -160,7 +161,7 @@ if (props.mealName != "") {
                
                     return [...preValue, {
                         menuItem:  [props.mealName, props.bodyText],
-                        detail: [props.image?.preview], price: props.price,  section: "Popular-Items"
+                        detail: [props.image?.preview, props.model?.preview], price: props.price,  section: "Popular-Items"
                     }]
                   
                 });

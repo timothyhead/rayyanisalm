@@ -14,8 +14,9 @@ const MealName = menuItemArray[0];
 const BodyText = menuItemArray[1]
 const detailArray = menuItems["detail"] || [];
 const image = detailArray[0];
+const model = detailArray[1];
 const price = menuItems.price;
-console.log(menuItems.price, "sdfghjkkjhgfdsdfghjk");
+console.log(model, "sdfghjkkjhgfdsdfghjk");
 
 const id = menuItems.id
 
@@ -35,8 +36,8 @@ function handleClick() {
    <details className="centre margin-bottom-30 inline">
    
    <div>
-    <a rel="ar" href={image}>
-       <img className="image50" src={steak}></img>
+    <a rel="ar" href={model}>
+       <img className="image50" src={image}></img>
     </a>
 
 </div>
