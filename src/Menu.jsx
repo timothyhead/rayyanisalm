@@ -18,93 +18,111 @@ function Menu(props) {
     const [coldDishes, setcoldDishes] = useState([{ menuItem:  [],
         detail: [], 
         sectionName: "",
-        image: String
+        image: String,
+        model: String
        }]);
     const [hotDishes, sethotDishes] = useState([{ menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
     const [mushimo, setMushimo] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
     const [yakiOnigiri, setYakiOnigiri] = useState([{ menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
     }]);
        
     const [donburi, setDonburi] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [robata, setRobata] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [nabe, setNabe] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [sushi, setSushi] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [omakaseSashimi, setOmakaseSashimi] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [assortedSashimi, setAssortedSashimi] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [sushiCombinations, setSushiCombinations] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [veggieRoll, setVeggieRoll] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [rolls, setRolls] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [nonAlcholicBeverages, setNonAlcholicBeverages] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [beerSake, setBeerSake] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [partyCombinationTray, setPartyCombinationTray] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [utensils, setUtensils] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);
        const [ramen, setRamen] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image:  String
+        image: String,
+        model: String
        }]);   
        const [aClass, setAClass]  = useState()
        var [menuArray, setMenuArray] = useState([{menuItem: [],
@@ -170,7 +188,7 @@ if (props.mealName != "") {
                 setcoldDishes((preValue) => {
                     return    [...preValue,{
                         menuItem:  [props.mealName, props.bodyText],
-                        detail: [props.image?.preview], price: props.price , section: "Cold-Dishes"
+                        detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Cold-Dishes"
                        
                                  
                                 
@@ -182,7 +200,7 @@ if (props.mealName != "") {
                 sethotDishes((preValue) => {
                     return    [...preValue,{
                         menuItem:  [props.mealName, props.bodyText],
-                        detail: [props.image?.preview], price: props.price , section: "Hot-Dishes"
+                        detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Hot-Dishes"
                        
                                  
                                 
@@ -194,7 +212,7 @@ if (props.mealName != "") {
                 setMushimo((preValue) => {
                     return    [...preValue,{
                         menuItem:  [props.mealName, props.bodyText],
-                        detail: [props.image?.preview], price: props.price , section: "Mushimo"
+                        detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Mushimo"
                        
                                  
                                 
@@ -206,7 +224,7 @@ if (props.mealName != "") {
              setYakiOnigiri((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Yaki-Onigiri"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Yaki-Onigiri"
                    
                              
                             
@@ -217,7 +235,7 @@ if (props.mealName != "") {
             setDonburi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Donburi"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Donburi"
                    
                              
                             
@@ -228,7 +246,7 @@ if (props.mealName != "") {
             setRobata((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Robata"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Robata"
                    
                              
                             
@@ -239,7 +257,7 @@ if (props.mealName != "") {
             setNabe((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Nabe"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Nabe"
                    
                              
                             
@@ -250,7 +268,7 @@ if (props.mealName != "") {
             setSushi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Sushi"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Sushi"
                    
                              
                             
@@ -261,7 +279,7 @@ if (props.mealName != "") {
             setOmakaseSashimi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Omakase-Sashimi"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Omakase-Sashimi"
                    
                              
                             
@@ -272,7 +290,7 @@ if (props.mealName != "") {
             setAssortedSashimi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Assorted-Sashimi"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Assorted-Sashimi"
                    
                              
                             
@@ -283,7 +301,7 @@ if (props.mealName != "") {
             setAssortedSashimi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Sushi-Combinations"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Sushi-Combinations"
                    
                              
                             
@@ -294,7 +312,7 @@ if (props.mealName != "") {
             setVeggieRoll((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Veggie-Roll"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Veggie-Roll"
                    
                              
                             
@@ -305,7 +323,7 @@ if (props.mealName != "") {
             setRolls((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Rolls"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Rolls"
                    
                              
                             
@@ -316,7 +334,7 @@ if (props.mealName != "") {
             setNonAlcholicBeverages((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Non-Alcholic-Beverages"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Non-Alcholic-Beverages"
                    
                              
                             
@@ -327,7 +345,7 @@ if (props.mealName != "") {
             setBeerSake((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Beer-&-Sake"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Beer-&-Sake"
                    
                              
                             
@@ -338,7 +356,7 @@ if (props.mealName != "") {
             setPartyCombinationTray((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Party-Combination-Tray"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Party-Combination-Tray"
                    
                              
                             
@@ -349,7 +367,7 @@ if (props.mealName != "") {
             setMushimo((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Utensils"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Utensils"
                    
                              
                             
@@ -360,7 +378,7 @@ if (props.mealName != "") {
             setRamen((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
-                    detail: [props.image?.preview], price: props.price , section: "Ramen"
+                    detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Ramen"
                    
                              
                             

@@ -122,7 +122,7 @@ function setMenu(menuArray) {
       <div className="edit-menu-div scroll">
         <div className="centre border-red corner form-div silk"> 
         <div className="form-inner-div orange inline corner" >
-<h1 className="green corner centre-text">To iPhone App</h1>
+<h1 className="green corner centre-text">Create and Edit Menu</h1>
 
 
 
@@ -179,7 +179,7 @@ function setMenu(menuArray) {
   <label>Select 3d model file
   <input  className="margin-left" type="file" name="file" onChange={changeHandler2} />
   </label>
-  <label>Select thumbnail image file
+  <label className="block">Select thumbnail image file
   <input  className="margin-left" type="file" name="file" onChange={changeHandler1} />
   </label>
  
