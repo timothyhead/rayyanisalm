@@ -266,6 +266,9 @@ position: absolute;
 .section-height {
   height: 100px;
 }
+.scroll {
+  overflow: scroll;
+}
 
 
 
