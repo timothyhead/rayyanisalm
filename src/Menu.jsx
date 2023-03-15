@@ -676,7 +676,7 @@ function deletePopularItems(id) {
 
 
     return (
-        <div className="{aClass} , scroll">
+        <div className={aClass}>
 <h1 className="corner green">Menu</h1>
 <section className="menu-div">
 

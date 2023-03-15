@@ -100,7 +100,7 @@ function setMenu(menuArray) {
 
 
     return (
-      <div className="edit-menu-div">
+      <div className="edit-menu-div scroll">
         <div className="centre border-red corner form-div silk"> 
         <div className="form-inner-div orange inline corner" >
 <h1 className="green corner centre-text">To iPhone App</h1>
