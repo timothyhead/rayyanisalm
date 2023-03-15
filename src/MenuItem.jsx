@@ -2,6 +2,7 @@
 import { logDOM } from "@testing-library/react";
 import { getValue } from "@testing-library/user-event/dist/utils";
 import React, { useEffect, useState } from "react";
+import steak from "./steak.jpg"
 
 function MenuItem(props) {
   
@@ -32,10 +33,10 @@ function handleClick() {
    <h4 className="inline margin-left-30px">{price} </h4>
    </div>
    <details className="centre margin-bottom-30 inline">
-   {/* <img className="image50" src={image}></img> */}
+   
    <div>
-    <a rel="ar" href="/assets/models/my-model.usdz">
-        <img src={image}/>
+    <a rel="ar" href={image}>
+       <img className="image50" src={steak}></img>
     </a>
     {/* "/assets/models/my-model-thumbnail.jpg" */}
 </div>
