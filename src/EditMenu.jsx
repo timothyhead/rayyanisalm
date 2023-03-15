@@ -166,11 +166,11 @@ function setMenu(menuArray) {
     {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="image"></img>: null }
     
     </div>
-    <div>
+    {/* <div>
     <a rel="ar" href="/assets/models/my-model.usdz">
         <img src="/assets/models/my-model-thumbnail.jpg"> </img>
     </a>
-</div>
+</div> */}
     </div>
 
     <div className="instruction-box-spacer-div corner">
