@@ -383,7 +383,7 @@ if (props.mealName != "") {
 
 
  async function handleSet(event) {
-//   console.log("Set");
+
 
      props.set(menu) 
      setPopularItems([])
