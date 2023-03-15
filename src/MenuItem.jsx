@@ -32,7 +32,13 @@ function handleClick() {
    <h4 className="inline margin-left-30px">{price} </h4>
    </div>
    <details className="centre margin-bottom-30 inline">
-   <img className="image50" src={image}></img>
+   {/* <img className="image50" src={image}></img> */}
+   <div>
+    <a rel="ar" href="/assets/models/my-model.usdz">
+        <img src={image}/>
+    </a>
+    {/* "/assets/models/my-model-thumbnail.jpg" */}
+</div>
    </details>
    <button className="inline" onClick={handleClick}>
     Delete
