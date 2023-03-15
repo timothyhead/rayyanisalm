@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rayyanislam/static/css/main.70693507.css",
+    "main.js": "/rayyanislam/static/js/main.a5ab9ed6.js",
+    "static/js/787.000459c0.chunk.js": "/rayyanislam/static/js/787.000459c0.chunk.js",
+    "index.html": "/rayyanislam/index.html",
+    "main.70693507.css.map": "/rayyanislam/static/css/main.70693507.css.map",
+    "main.a5ab9ed6.js.map": "/rayyanislam/static/js/main.a5ab9ed6.js.map",
+    "787.000459c0.chunk.js.map": "/rayyanislam/static/js/787.000459c0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.70693507.css",
+    "static/js/main.a5ab9ed6.js"
+  ]
+}
