@@ -38,7 +38,7 @@ function handleClick() {
     <a rel="ar" href={image}>
        <img className="image50" src={steak}></img>
     </a>
-    {/* "/assets/models/my-model-thumbnail.jpg" */}
+
 </div>
    </details>
    <button className="inline" onClick={handleClick}>
