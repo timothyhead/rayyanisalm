@@ -110,7 +110,7 @@ function setMenu(menuArray) {
 
 
 
-<form className="form-group">
+<form >
 
       <label  className="form-input-width" >Enter Section Name:
        
