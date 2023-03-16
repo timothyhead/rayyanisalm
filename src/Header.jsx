@@ -39,8 +39,8 @@ return(
 <Router basename="/rayyanisalm">
 <header>
      <nav>
-       <Link className="block" to="/edit-menu">EDIT MENU</Link>
-       <Link to="/public-menu">PUBLIC MENU</Link>
+       <Link className="links" to="/edit-menu">EDIT MENU</Link>
+       <Link className="links" to="/public-menu">PUBLIC MENU</Link>
        </nav>
        <Outlet />
      </header>
