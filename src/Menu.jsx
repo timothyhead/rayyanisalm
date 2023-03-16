@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState} from "react";
 import MenuList from "./MenuList";
-import PublicMenu from "./PublicMenu";
+
 
 
 
@@ -125,19 +125,15 @@ function Menu(props) {
         model: String
        }]);   
        const [aClass, setAClass]  = useState()
-       var [menuArray, setMenuArray] = useState([{menuItem: [],
-        detail: [],
-        sectionName: "",
-        isSet: false
-        }]);
-      var [isSet, setIset] = useState(false);
-      const [menu, setMenu]  = useState([]);
-      const [images , setImages]  = useState([]);
-      const [allData, setAllData] = useState({});
-      const [formData, setFormData] = useState();
-      const [newMenu, setNewMenu] = useState([]);
   
       const ref = useRef(null);
+
+      const [menu, setMenu] = useState([{ menuItem:  [],
+        detail: [], 
+        sectionName: "Popular-Items",
+        image: String,
+        model: String
+        }])
      
     
 
@@ -161,14 +157,14 @@ useEffect(() => {
    setAClass("silk corner flex-container-vertical border-red edit-menus-menu-div") 
 
         
-if (props.mealName != "") {
+if (props.mealName !== "") {
     populateMenu(props) 
     console.log("Hello populate menu");
   
 }
        
  
-   }, [props.add])
+   }, [props.add], [props])
 
   
     function populateMenu(props) {
@@ -388,6 +384,7 @@ if (props.mealName != "") {
                             
                          }];
             });
+            break
         default: 
         break
     

@@ -1,15 +1,14 @@
-import { logDOM } from "@testing-library/react";
-import React, { useEffect, useState } from "react";
+
+import React, { useEffect} from "react";
 import MenuItem from "./MenuItem";
 
 function MenuList(props) {
 
-  let didInit = false
   useEffect(() => {
 
       props.menuItems.shift()
 
-  }, [])
+  }, [props.menuItem])
 
 function handleClick(id) {
 

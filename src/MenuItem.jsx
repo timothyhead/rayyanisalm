@@ -1,8 +1,7 @@
 
-import { logDOM } from "@testing-library/react";
-import { getValue } from "@testing-library/user-event/dist/utils";
-import React, { useEffect, useState } from "react";
-import steak from "./steak.jpg"
+
+import React from "react";
+
 
 function MenuItem(props) {
   
@@ -18,7 +17,7 @@ const model = detailArray[1];
 const price = menuItems.price;
 
 
-const id = menuItems.id
+
 
 
 function handleClick() {
@@ -37,7 +36,7 @@ function handleClick() {
    
    <div>
     <a rel="ar" href={model}>
-       <img className="image50" src={image}></img>
+       <img className="image50" src={image} alt="NO IMage"></img>
     </a>
 
 </div>

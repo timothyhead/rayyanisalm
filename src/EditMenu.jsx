@@ -11,11 +11,7 @@ function EditMenu(props) {
      var [isClicked, setIsClicked] = useState(false);
      const [selectedFile, setSelectedFile] = useState();
      const [selectedModel, setSelectedModel] = useState();
-     const data = ""
-   
-     
-   
-
+    
 const handleChange = event => {
     setSectionName(event.target.value)
     setSectionName((state) => {
@@ -188,11 +184,7 @@ function setMenu(menuArray) {
     {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="image"></img>: null }
     
     </div>
-    {/* <div>
-    <a rel="ar" href="/assets/models/my-model.usdz">
-        <img src="/assets/models/my-model-thumbnail.jpg"> </img>
-    </a>
-</div> */}
+   
     </div>
 
     <div className="instruction-box-spacer-div corner">

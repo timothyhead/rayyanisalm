@@ -14,24 +14,12 @@ function Header() {
     section: ""
             
          }]);
-         const [isClicked, setIsClicked] = useState(false);
+        
          const pull_data = (data) => {
          setMenuArray(data)
         };
 
-  function setMenu(menu) {
-    console.log(menu, "menu");
 
-setIsClicked(false)
-setIsClicked((state) => {
-
-return state;
-});
-
-
-setMenuArray(menu);
-
-};
 
 return(
     <div>

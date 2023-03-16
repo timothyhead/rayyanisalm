@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function PublicMenu(props) {
-const arr = [1,1,2,3]
-
-
 
  return (
     <div>
