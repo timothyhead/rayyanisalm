@@ -135,7 +135,7 @@ function Menu(props) {
         model: String
         }])
      
-    
+
 
       
 
@@ -399,9 +399,11 @@ if (props.mealName !== "") {
     }
 
 
-    function repopulateMenu(menu) {
+    function repopulateMenu(recoveredMenu) {
+
+
      
-        menu.forEach(element => {
+      recoveredMenu?.forEach(element => {
           
   
         switch (element.section) {
@@ -674,7 +676,7 @@ function deletePopularItems(id) {
    
 
  
-    menu.length > 0 ? localStorage.setItem("Menu", JSON.stringify(menu)) : localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
+    menu?.length > 0 ? localStorage.setItem("Menu", JSON.stringify(menu)) : localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
         detail: [], 
         sectionName: "Popular-Items",
         image: String,

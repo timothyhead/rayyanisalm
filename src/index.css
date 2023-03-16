@@ -19,7 +19,11 @@ header {
 div {
   overflow: auto;
 }
-
+#scroll-div {
+  overflow: scroll;
+  height: 100%;
+  border: 5px dashed #FFD5C2;
+}
 
 .red {
   background-color: #ED220D;
@@ -133,7 +137,8 @@ textarea {
 
 .form-div {
   height: 31%;
-  width: 80%;
+  width: 60%;
+
 }
 .edit-menu-div {
   height: 1000px;
@@ -155,19 +160,26 @@ textarea {
  float: left;
 }
 .instruction-box-div {
-  height: 25%;
-  width: 19%;
-  float: right;
+  height: 50%;
+  width: 50%;
+
+}
+.info-box-and-add-button {
+margin-top: -12.5%;
+float: right;
+margin-left: 80%;
+
 
 }
 .add-button-div {
   height: 12%;
-  width: 12%;
-  float: right;
-  margin-left: 19%;
+  width: 20%;
+
+
 }
 .instruction-box-spacer-div {
   height: 60%;
+
 }
 .image50 {
   width: 50px;;
@@ -243,19 +255,7 @@ position: absolute;
   top: 25%;
  
 }
-.orders-customer-details-box-left {
-  float: left;
-  width: 25%;
-}
-.orders-customer-details-box-middle {
-  float: left;
-  width: 25%; 
-}
-.orders-customer-details-box-right {
-  float: right;
-  width: 50%
- 
-}
+
 
 .orders-name-height {
   height: 60px;
@@ -264,9 +264,7 @@ position: absolute;
 .section-height {
   height: 100px;
 }
-.scroll {
-  overflow: scroll;
-}
+
 .destruct {
   background-color: red;
   color: white;

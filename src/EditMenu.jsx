@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Menu from "./Menu";
 
 
@@ -11,6 +11,9 @@ function EditMenu(props) {
      var [isClicked, setIsClicked] = useState(false);
      const [selectedFile, setSelectedFile] = useState();
      const [selectedModel, setSelectedModel] = useState();
+    //  const element = document.getElementById("scroll-div");
+    //  element?.scrollTop(20);
+  
     
 const handleChange = event => {
     setSectionName(event.target.value)
@@ -25,6 +28,7 @@ const pull_data = (data) => {
   props.func(data)
 };
 
+
 useEffect(() => {
   setSectionName("Popular-Items")
  setMealName("")
@@ -33,6 +37,7 @@ useEffect(() => {
  setIsClicked(false)
 
   }, [])
+
 
   function handleClick() {
 
@@ -105,17 +110,14 @@ function getBase64two(file) {
   };
 }
 
-function setMenu(menuArray) {
 
-   // props.set(menuArray)
-}
 
 
    
 
 
     return (
-      <div className="edit-menu-div scroll">
+      <div className="edit-menu-div" id="scroll-div">
         <div className="centre border-red corner form-div silk"> 
         <div className="form-inner-div orange inline corner" >
 <h1 className="green corner centre-text">Create and Edit Menu</h1>
@@ -190,7 +192,7 @@ function setMenu(menuArray) {
     <div className="instruction-box-spacer-div corner">
 
     </div>
-     
+     <div className="info-box-and-add-button">
       <div className="add-button-div ">
 <button onClick={() => {
 handleClick()
@@ -200,12 +202,14 @@ handleClick()
 <h5>Fill out the form to edit the menu. When done click to set the menu at the bottom</h5>
 </div>
 
+ </div>
+
 
 
  
         </div>
         <div className="to-retaurant-app-menu-div">
-        <Menu isRedBorder={true} mealName={mealName} bodyText={bodyText} image={selectedFile} model={selectedModel} price={Number(price)} section={sectionName} add={isClicked}  set={setMenu}  func={pull_data}/>
+        <Menu isRedBorder={true} mealName={mealName} bodyText={bodyText} image={selectedFile} model={selectedModel} price={Number(price)} section={sectionName} add={isClicked}  func={pull_data}/>
         </div>
         <div>
 </div>
