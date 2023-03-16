@@ -165,15 +165,18 @@ textarea {
 
 }
 .info-box-and-add-button {
-margin-top: -12.5%;
-float: right;
-margin-left: 80%;
+  position: fixed;
+  top: 34%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+/* float: right;
+margin-left: 80%; */
 
 
 }
 .add-button-div {
   height: 12%;
-  width: 20%;
+  width: 50%;
 
 
 }

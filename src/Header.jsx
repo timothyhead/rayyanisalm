@@ -17,6 +17,7 @@ function Header() {
         
          const pull_data = (data) => {
          setMenuArray(data)
+         console.log(data, "datadatadatada");
         };
 
 

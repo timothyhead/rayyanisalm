@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "./Menu";
 
 
@@ -11,8 +11,7 @@ function EditMenu(props) {
      var [isClicked, setIsClicked] = useState(false);
      const [selectedFile, setSelectedFile] = useState();
      const [selectedModel, setSelectedModel] = useState();
-    //  const element = document.getElementById("scroll-div");
-    //  element?.scrollTop(20);
+
   
     
 const handleChange = event => {
@@ -183,7 +182,7 @@ function getBase64two(file) {
  
     </form>
     <div>
-    {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="image"></img>: null }
+    {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="placeholder"></img>: null }
     
     </div>
    

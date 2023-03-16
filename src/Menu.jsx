@@ -636,7 +636,7 @@ if (props.mealName !== "") {
  async function handleSet(event) {
 
 
-     props.set(menu) 
+
   
      props.func(menu)
     
