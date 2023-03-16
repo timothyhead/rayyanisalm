@@ -165,12 +165,9 @@ textarea {
 
 }
 .info-box-and-add-button {
-  position: fixed;
-  top: 34%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-/* float: right;
-margin-left: 80%; */
+  position: relative;
+  right: -10%;
+
 
 
 }
