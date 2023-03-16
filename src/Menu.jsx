@@ -138,17 +138,21 @@ function Menu(props) {
       const [newMenu, setNewMenu] = useState([]);
   
       const ref = useRef(null);
+     
+    
+
+      
 
     
 
 useEffect(() => {
-    setAllData({"menu": menu, "images": images})
+ 
+ 
+  let recoveredMenu = JSON.parse(localStorage.getItem("Menu"))
+  repopulateMenu(recoveredMenu);
+ setMenu(recoveredMenu);
    
-}, [images])
-
-
-
-
+}, [])
 
 
 
@@ -392,128 +396,301 @@ if (props.mealName != "") {
        
      }
      setMenu(preValue => {
-        return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.result}]
+        return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.result, model: props.model?.preview}]
         
      });
     }
+
+
+    function repopulateMenu(menu) {
+     
+        menu.forEach(element => {
+          
+  
+        switch (element.section) {
+
+       
+          
+            case "Popular-Items":
+              
+                setPopularItems((preValue) => {
+               
+                    return [...preValue, {
+                        menuItem:  [element.mealName, element.bodyText],
+                        detail: [element.image?.preview, element.model?.preview], price: element.price,  section: "Popular-Items"
+                    }]
+                  
+                });
+             break;
+            case "Cold-Dishes":
+                setcoldDishes((preValue) => {
+                    return    [...preValue,{
+                        menuItem:  [element.mealName, element.bodyText],
+                        detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Cold-Dishes"
+                       
+                                 
+                                
+                             }];
+                      
+                });
+            break;
+            case "Hot-Dishes":
+                sethotDishes((preValue) => {
+                    return    [...preValue,{
+                        menuItem:  [element.mealName, element.bodyText],
+                        detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Hot-Dishes"
+                       
+                                 
+                                
+                             }];
+                  
+                });
+            break;
+            case "Mushimo":
+                setMushimo((preValue) => {
+                    return    [...preValue,{
+                        menuItem:  [element.mealName, element.bodyText],
+                        detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Mushimo"
+                       
+                                 
+                                
+                             }];
+                });
+            break;
+            case "Yaki-Onigiri":
     
-
-
+             setYakiOnigiri((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Yaki-Onigiri"
+                   
+                             
+                            
+                         }];
+                }) ;
+            break;
+          case "Donburi":
+            setDonburi((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Donburi"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Robata":
+            setRobata((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Robata"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Nabe":
+            setNabe((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Nabe"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Sushi":
+            setSushi((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Sushi"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Omakase-Sashimi":
+            setOmakaseSashimi((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Omakase-Sashimi"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Assorted-Sashimi":
+            setAssortedSashimi((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Assorted-Sashimi"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Sushi-Combinations":
+            setAssortedSashimi((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Sushi-Combinations"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Veggie-Roll":
+            setVeggieRoll((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Veggie-Roll"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Rolls":
+            setRolls((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Rolls"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Non-Alcholic-Beverages":
+            setNonAlcholicBeverages((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Non-Alcholic-Beverages"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Beer-&-Sake":
+            setBeerSake((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Beer-&-Sake"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Party-Combination-Tray":
+            setPartyCombinationTray((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Party-Combination-Tray"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Utensils":
+            setMushimo((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Utensils"
+                   
+                             
+                            
+                         }];
+            });
+        break;
+        case "Ramen":
+            setRamen((preValue) => {
+                return    [...preValue,{
+                    menuItem:  [element.mealName, element.bodyText],
+                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Ramen"
+                   
+                             
+                            
+                         }];
+            });
+        default: 
+        break
+    
+        
+       
+       
+     }
+    });
+};
+   
 
 
  async function handleSet(event) {
 
 
      props.set(menu) 
-     setPopularItems([])
-     setcoldDishes([])
-     sethotDishes([])
-     setMushimo([])
-     setYakiOnigiri([])
-     setDonburi([])
-     setRobata([])
-     setNabe([])
-     setSushi([])
-     setOmakaseSashimi([])
-     setAssortedSashimi([])
-     setSushiCombinations([])
-     setVeggieRoll([])
-     setRolls([])
-     setNonAlcholicBeverages([])
-     setBeerSake([])
-     setPartyCombinationTray([])
-     setUtensils([])
-     setRamen([])
-     props.func(menu, "Hello menu")
-    
-//saveMenu()
-//     const anotherResponse = await fetch("https://localhost:8080", {
-//         method: "POST",
-//         headers: {
-//             'Content-Type': 'application/json'
-//             // 'Content-Type': 'application/x-www-form-urlencoded',
-//           },
-//         body: JSON.stringify({"menu" : menu}),
-       
-
-//     })
-//    setMenu([])
-
-
   
+     props.func(menu)
+    
+
+
+
+menu?.length > 0 && localStorage.setItem("Menu", JSON.stringify(menu))
  
 
  }
-function resetOutGoingMenuArrayToBackend() {
-    console.log("Here");
-    setMenu([]);
-    setPopularItems((state) => {
-        console.log(state);
-        state.forEach((item) => {
-            setMenu(preValue => {
-                return [{mealName: item.menuItem[0], bodyText:  item.menuItem[1],image: item.detail[0], detailText: item.detail[1], price: item.price,section: item.section}]
-                
-             });
-        })
-        return state
-    })
-    setcoldDishes((state) => {
-        console.log(state);
-        state.forEach((item) => {
-            setMenu(preValue => {
-                return [{mealName: item.menuItem[0], bodyText:  item.menuItem[1],image: item.detail[0], detailText: item.detail[1], price: item.price,section: item.section}]
-                
-             });
-        })
-        return state
-    })
-    sethotDishes((state) => {
-        console.log(state);
-        state.forEach((item) => {
-            setMenu(preValue => {
-                return [{mealName: item.menuItem[0], bodyText:  item.menuItem[1],image: item.detail[0], detailText: item.detail[1], price: item.price,section: item.section}]
-                
-             });
-        })
-        return state
-    })
-}
-    // setSides((state) => {
-    //     console.log(state);
-    //     state.forEach((item) => {
-    //         setMenu(preValue => {
-    //             return [{mealName: item.menuItem[0], bodyText:  item.menuItem[1],image: item.detail[0], detailText: item.detail[1], price: item.price,section: item.section}]
-                
-    //          });
-    //     })
-    //     return state
-    // })
-    // setSpecalties((state) => {
-    //     console.log(state);
-    //     state.forEach((item) => {
-    //         setMenu(preValue => {
-    //             return [{mealName: item.menuItem[0], bodyText:  item.menuItem[1],image: item.detail[0], detailText: item.detail[1], price: item.price,section: item.section}]
-                
-    //          });
-    //     })
-    //     return state
-    // })
- 
 
+ 
+function deleteFromMenu(item) {
+setMenu(preValue => {
+    return preValue.filter((menuItem, index) => {
+      
+return menuItem.mealName !== item.menuItem[0]
+    })
+})
+};
 function deletePopularItems(id) {
     setPopularItems(preValue => {
         return preValue.filter((item, index) => {
-        
-        
+
+        if (index === id) {
+          deleteFromMenu(item)
+        }
+       
           return index !== id;
       
          })
       })
+     
     }
+
+   useEffect(() => {
+   
+
+ 
+    menu.length > 0 ? localStorage.setItem("Menu", JSON.stringify(menu)) : localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
+        detail: [], 
+        sectionName: "Popular-Items",
+        image: String,
+        model: String
+        }]));
+   }, [menu])
     function deletecoldDishes(id) {
        setcoldDishes(preValue => {
             return preValue.filter((item, index) => {
-            
+                 
+                if (index === id) {
+                    deleteFromMenu(item)
+                  }
             
               return index !== id;
           
@@ -523,7 +700,11 @@ function deletePopularItems(id) {
         function deletehotDishes(id) {
             sethotDishes(preValue => {
                 return preValue.filter((item, index) => {
-                
+                        
+        
+                    if (index === id) {
+                        deleteFromMenu(item)
+                      }
                 
                   return index !== id;
               
@@ -534,7 +715,11 @@ function deletePopularItems(id) {
                 setMushimo(preValue => {
                     return preValue.filter((item, index) => {
                     
-                    
+                            
+                        if (index === id) {
+                            deleteFromMenu(item)
+                          }
+              
                       return index !== id;
                   
                      })
@@ -543,8 +728,11 @@ function deletePopularItems(id) {
                 function deleteYakiOnigiri(id) {
                     setYakiOnigiri(preValue => {
                         return preValue.filter((item, index) => {
-                        
-                        
+                                
+     
+                            if (index === id) {
+                                deleteFromMenu(item)
+                              }
                           return index !== id;
                       
                          })
@@ -554,7 +742,11 @@ function deletePopularItems(id) {
                         setDonburi(preValue => {
                             return preValue.filter((item, index) => {
                             
-                            
+                                    
+                                if (index === id) {
+                                    deleteFromMenu(item)
+                                  }
+              
                               return index !== id;
                           
                              })
@@ -563,7 +755,11 @@ function deletePopularItems(id) {
                         function deleteRobata(id) {
                             setRobata(preValue => {
                                 return preValue.filter((item, index) => {
-                                
+                                        
+        
+                                    if (index === id) {
+                                        deleteFromMenu(item)
+                                      }
                                 
                                   return index !== id;
                               
@@ -574,7 +770,11 @@ function deletePopularItems(id) {
                                 setNabe(preValue => {
                                     return preValue.filter((item, index) => {
                                     
-                                    
+                                            
+                                        if (index === id) {
+                                            deleteFromMenu(item)
+                                          }
+              
                                       return index !== id;
                                   
                                      })
@@ -584,7 +784,11 @@ function deletePopularItems(id) {
                                    setSushi(preValue => {
                                         return preValue.filter((item, index) => {
                                         
-                                        
+                                                
+                                            if (index === id) {
+                                                deleteFromMenu(item)
+                                              }
+              
                                           return index !== id;
                                       
                                          })
@@ -594,7 +798,11 @@ function deletePopularItems(id) {
                                         setOmakaseSashimi(preValue => {
                                             return preValue.filter((item, index) => {
                                             
-                                            
+                                                    
+                                                if (index === id) {
+                                                    deleteFromMenu(item)
+                                                  }
+              
                                               return index !== id;
                                           
                                              })
@@ -604,7 +812,11 @@ function deletePopularItems(id) {
                                             setAssortedSashimi(preValue => {
                                                 return preValue.filter((item, index) => {
                                                 
-                                                
+                                                        
+                                                    if (index === id) {
+                                                        deleteFromMenu(item)
+                                                      }
+              
                                                   return index !== id;
                                               
                                                  })
@@ -614,7 +826,10 @@ function deletePopularItems(id) {
                                                 setSushiCombinations(preValue => {
                                                     return preValue.filter((item, index) => {
                                                     
-                                                    
+                                                        if (index === id) {
+                                                            deleteFromMenu(item)
+                                                          }      
+        
                                                       return index !== id;
                                                   
                                                      })
@@ -624,7 +839,10 @@ function deletePopularItems(id) {
                                                     setVeggieRoll(preValue => {
                                                         return preValue.filter((item, index) => {
                                                         
-                                                        
+                                                            if (index === id) {
+                                                                deleteFromMenu(item)
+                                                              }       
+     
                                                           return index !== id;
                                                       
                                                          })
@@ -633,8 +851,11 @@ function deletePopularItems(id) {
                                                     function deleteRolls(id) {
                                                         setRolls(preValue => {
                                                             return preValue.filter((item, index) => {
-                                                            
-                                                            
+                                                                    
+      
+                                                                if (index === id) {
+                                                                    deleteFromMenu(item)
+                                                                  }
                                                               return index !== id;
                                                           
                                                              })
@@ -644,7 +865,10 @@ function deletePopularItems(id) {
                                                             setNonAlcholicBeverages(preValue => {
                                                                 return preValue.filter((item, index) => {
                                                                 
-                                                                
+                                                                    if (index === id) {
+                                                                        deleteFromMenu(item)
+                                                                      }       
+      
                                                                   return index !== id;
                                                               
                                                                  })
@@ -654,7 +878,10 @@ function deletePopularItems(id) {
                                                               setBeerSake(preValue => {
                                                                     return preValue.filter((item, index) => {
                                                                     
-                                                                    
+                                                                        if (index === id) {
+                                                                            deleteFromMenu(item)
+                                                                          }      
+       
                                                                       return index !== id;
                                                                   
                                                                      })
@@ -664,7 +891,9 @@ function deletePopularItems(id) {
                                                                     setPartyCombinationTray(preValue => {
                                                                         return preValue.filter((item, index) => {
                                                                         
-                                                                        
+                                                                            if (index === id) {
+                                                                                deleteFromMenu(item)
+                                                                              }
                                                                           return index !== id;
                                                                       
                                                                          })
@@ -674,7 +903,9 @@ function deletePopularItems(id) {
                                                                        setUtensils(preValue => {
                                                                             return preValue.filter((item, index) => {
                                                                             
-                                                                            
+                                                                                if (index === id) {
+                                                                                    deleteFromMenu(item)
+                                                                                  }
                                                                               return index !== id;
                                                                           
                                                                              })
@@ -684,14 +915,43 @@ function deletePopularItems(id) {
                                                                             setRamen(preValue => {
                                                                                 return preValue.filter((item, index) => {
                                                                                 
-                                                                                
+                                                                                    if (index === id) {
+                                                                                        deleteFromMenu(item)
+                                                                                      }
                                                                                   return index !== id;
                                                                               
                                                                                  })
                                                                               })
                                                                             }
 
-
+function clear() {
+    localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
+        detail: [], 
+        sectionName: "Popular-Items",
+        image: String,
+        model: String
+        }]));
+    setMenu([]);
+    setPopularItems([])
+    setcoldDishes([])
+    sethotDishes([])
+    setMushimo([])
+    setYakiOnigiri([])
+    setDonburi([])
+    setRobata([])
+    setNabe([])
+    setSushi([])
+    setOmakaseSashimi([])
+    setAssortedSashimi([])
+    setSushiCombinations([])
+    setVeggieRoll([])
+    setRolls([])
+    setNonAlcholicBeverages([])
+    setBeerSake([])
+    setPartyCombinationTray([])
+    setUtensils([])
+    setRamen([])
+};
 
 
     return (
@@ -722,6 +982,7 @@ function deletePopularItems(id) {
 {props.isRedBorder ? 
 
 <button ref={ref} id="set-menu-button" onClick={handleSet}>Set Menu</button> : null}
+<button onClick={clear}>CLEAR</button>
 
      
 </section>

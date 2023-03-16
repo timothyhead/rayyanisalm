@@ -16,7 +16,7 @@ const detailArray = menuItems["detail"] || [];
 const image = detailArray[0];
 const model = detailArray[1];
 const price = menuItems.price;
-console.log(model, "sdfghjkkjhgfdsdfghjk");
+
 
 const id = menuItems.id
 
