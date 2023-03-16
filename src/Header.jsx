@@ -36,7 +36,7 @@ setMenuArray(menu);
 return(
     <div>
       
-<Router>
+<Router basename="/rayyanisalm">
 <header>
      <nav>
        <Link className="block" to="/edit-menu">EDIT MENU</Link>

@@ -982,7 +982,7 @@ function clear() {
 {props.isRedBorder ? 
 
 <button ref={ref} id="set-menu-button" onClick={handleSet}>Set Menu</button> : null}
-<button onClick={clear}>CLEAR</button>
+<button className="destruct" onClick={clear}>CLEAR</button>
 
      
 </section>
