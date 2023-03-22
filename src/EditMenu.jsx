@@ -40,7 +40,6 @@ useEffect(() => {
 
   function handleClick() {
 
-    console.log("meal name", mealName);
   setIsClicked(isClicked = !isClicked)
 
   setIsClicked((state) => {
@@ -79,7 +78,7 @@ function getBase64one(file) {
   reader.readAsDataURL(file);
   reader.onload = function () {
     let result = reader.result
-    console.log(reader.result);
+
     const img = {
       preview: URL.createObjectURL(file),
  result
@@ -131,10 +130,10 @@ function getBase64two(file) {
       <label  className="form-input-width" >Enter Section Name:
        
         <select  className="form-input-width margin-left-5px" value={sectionName} onChange={handleChange}>
-        <option  value="Popular-Items">Popular Items</option>
-        <option   value="Cold-Dishes">Cold Dishes</option>
-        <option  value="Hot-Dishes">Hot Dishes</option>
-        <option   value="Mushimo">Mushimo</option>
+        <option value="Popular-Items">Popular Items</option>
+        <option value="Cold-Dishes">Cold Dishes</option>
+        <option value="Hot-Dishes">Hot Dishes</option>
+        <option value="Mushimono">Mushimono</option>
         <option value="Yaki-Onigiri">Yaki Onigiri</option>
         <option value="Donburi">Donbrui</option>
         <option value="Robata">Robata</option>

@@ -27,7 +27,7 @@ function Menu(props) {
         image: String,
         model: String
        }]);
-    const [mushimo, setMushimo] = useState([{menuItem:  [],
+    const [mushimono, setMushimono] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
         image: String,
@@ -134,6 +134,7 @@ function Menu(props) {
         image: String,
         model: String
         }])
+       var [id, setId] = useState(0)
      
 
 
@@ -147,6 +148,7 @@ useEffect(() => {
   let recoveredMenu = JSON.parse(localStorage.getItem("Menu"))
   repopulateMenu(recoveredMenu);
  setMenu(recoveredMenu);
+ setId(JSON.parse(localStorage.getItem("id")));
    
 }, [])
 
@@ -159,7 +161,7 @@ useEffect(() => {
         
 if (props.mealName !== "") {
     populateMenu(props) 
-    console.log("Hello populate menu");
+  
   
 }
        
@@ -168,13 +170,12 @@ if (props.mealName !== "") {
 
   
     function populateMenu(props) {
-        console.log(props.section, "section", props.mealName);
+       
         switch (props.section) {
 
        
           
             case "Popular-Items":
-               console.log("popular");
                 setPopularItems((preValue) => {
                
                     return [...preValue, {
@@ -208,8 +209,8 @@ if (props.mealName !== "") {
                   
                 });
             break;
-            case "Mushimo":
-                setMushimo((preValue) => {
+            case "Mushimono":
+                setMushimono((preValue) => {
                     return    [...preValue,{
                         menuItem:  [props.mealName, props.bodyText],
                         detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Mushimo"
@@ -298,7 +299,7 @@ if (props.mealName !== "") {
             });
         break;
         case "Sushi-Combinations":
-            setAssortedSashimi((preValue) => {
+            setSushiCombinations((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
                     detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Sushi-Combinations"
@@ -364,7 +365,7 @@ if (props.mealName !== "") {
             });
         break;
         case "Utensils":
-            setMushimo((preValue) => {
+            setUtensils((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
                     detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Utensils"
@@ -393,9 +394,11 @@ if (props.mealName !== "") {
        
      }
      setMenu(preValue => {
-        return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.result, model: props.model?.preview}]
+        return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.preview, model: props.model?.preview, id : id, currency: "$"}]
         
      });
+ setId(id + 1)
+     console.log(id , "cghjxkzl;fjdkslhgjvkclx;bjvkclx;");
     }
 
 
@@ -416,7 +419,7 @@ if (props.mealName !== "") {
                
                     return [...preValue, {
                         menuItem:  [element.mealName, element.bodyText],
-                        detail: [element.image?.preview, element.model?.preview], price: element.price,  section: "Popular-Items"
+                        detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price,  section: "Popular-Items"
                     }]
                   
                 });
@@ -425,7 +428,7 @@ if (props.mealName !== "") {
                 setcoldDishes((preValue) => {
                     return    [...preValue,{
                         menuItem:  [element.mealName, element.bodyText],
-                        detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Cold-Dishes"
+                        detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Cold-Dishes"
                        
                                  
                                 
@@ -437,7 +440,7 @@ if (props.mealName !== "") {
                 sethotDishes((preValue) => {
                     return    [...preValue,{
                         menuItem:  [element.mealName, element.bodyText],
-                        detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Hot-Dishes"
+                        detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Hot-Dishes"
                        
                                  
                                 
@@ -445,11 +448,11 @@ if (props.mealName !== "") {
                   
                 });
             break;
-            case "Mushimo":
-                setMushimo((preValue) => {
+            case "Mushimono":
+                setMushimono((preValue) => {
                     return    [...preValue,{
                         menuItem:  [element.mealName, element.bodyText],
-                        detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Mushimo"
+                        detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Mushimo"
                        
                                  
                                 
@@ -461,7 +464,7 @@ if (props.mealName !== "") {
              setYakiOnigiri((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Yaki-Onigiri"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Yaki-Onigiri"
                    
                              
                             
@@ -472,7 +475,7 @@ if (props.mealName !== "") {
             setDonburi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Donburi"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Donburi"
                    
                              
                             
@@ -483,7 +486,7 @@ if (props.mealName !== "") {
             setRobata((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Robata"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Robata"
                    
                              
                             
@@ -494,7 +497,7 @@ if (props.mealName !== "") {
             setNabe((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Nabe"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Nabe"
                    
                              
                             
@@ -505,7 +508,7 @@ if (props.mealName !== "") {
             setSushi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Sushi"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Sushi"
                    
                              
                             
@@ -516,7 +519,7 @@ if (props.mealName !== "") {
             setOmakaseSashimi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Omakase-Sashimi"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Omakase-Sashimi"
                    
                              
                             
@@ -527,7 +530,7 @@ if (props.mealName !== "") {
             setAssortedSashimi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Assorted-Sashimi"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Assorted-Sashimi"
                    
                              
                             
@@ -538,7 +541,7 @@ if (props.mealName !== "") {
             setAssortedSashimi((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Sushi-Combinations"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Sushi-Combinations"
                    
                              
                             
@@ -549,7 +552,7 @@ if (props.mealName !== "") {
             setVeggieRoll((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Veggie-Roll"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Veggie-Roll"
                    
                              
                             
@@ -560,7 +563,7 @@ if (props.mealName !== "") {
             setRolls((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Rolls"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Rolls"
                    
                              
                             
@@ -571,7 +574,7 @@ if (props.mealName !== "") {
             setNonAlcholicBeverages((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Non-Alcholic-Beverages"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Non-Alcholic-Beverages"
                    
                              
                             
@@ -582,7 +585,7 @@ if (props.mealName !== "") {
             setBeerSake((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Beer-&-Sake"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Beer-&-Sake"
                    
                              
                             
@@ -593,7 +596,7 @@ if (props.mealName !== "") {
             setPartyCombinationTray((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Party-Combination-Tray"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Party-Combination-Tray"
                    
                              
                             
@@ -601,10 +604,10 @@ if (props.mealName !== "") {
             });
         break;
         case "Utensils":
-            setMushimo((preValue) => {
+            setMushimono((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Utensils"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Utensils"
                    
                              
                             
@@ -615,7 +618,7 @@ if (props.mealName !== "") {
             setRamen((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
-                    detail: [element.image?.preview, element.model?.preview], price: element.price , section: "Ramen"
+                    detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price , section: "Ramen"
                    
                              
                             
@@ -644,6 +647,7 @@ if (props.mealName !== "") {
 
 
 menu?.length > 0 && localStorage.setItem("Menu", JSON.stringify(menu))
+menu?.length > 0 &&  localStorage.setItem("id", JSON.stringify(id));  
  
 
  }
@@ -682,7 +686,9 @@ function deletePopularItems(id) {
         image: String,
         model: String
         }]));
+        menu?.length > 0 ? localStorage.setItem("id", JSON.stringify(id)) : localStorage.setItem("id", JSON.stringify(0))
    }, [menu])
+ 
     function deletecoldDishes(id) {
        setcoldDishes(preValue => {
             return preValue.filter((item, index) => {
@@ -711,7 +717,7 @@ function deletePopularItems(id) {
               })
             }
             function deleteMushimo(id) {
-                setMushimo(preValue => {
+                setMushimono(preValue => {
                     return preValue.filter((item, index) => {
                     
                             
@@ -921,7 +927,7 @@ function deletePopularItems(id) {
                                                                               
                                                                                  })
                                                                               })
-                                                                            }
+                                                                                                                                               }
 
 function clear() {
     localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
@@ -930,11 +936,12 @@ function clear() {
         image: String,
         model: String
         }]));
+        localStorage.setItem("id", JSON.stringify(0))
     setMenu([]);
     setPopularItems([])
     setcoldDishes([])
     sethotDishes([])
-    setMushimo([])
+    setMushimono([])
     setYakiOnigiri([])
     setDonburi([])
     setRobata([])
@@ -961,7 +968,7 @@ function clear() {
 <MenuList sectionName="Popular Items" menuItems={popularItems} delete={deletePopularItems}/>
 <MenuList sectionName="Cold Dishes" menuItems={coldDishes} delete={deletecoldDishes}/>
 <MenuList sectionName="Hot Dishes" menuItems={hotDishes} delete={deletehotDishes}/>
-<MenuList sectionName="Mushimo" menuItems={mushimo} delete={deleteMushimo}/>
+<MenuList sectionName="Mushimo" menuItems={mushimono} delete={deleteMushimo}/>
 <MenuList sectionName="Yaki Onigiri"  menuItems={yakiOnigiri} delete={deleteYakiOnigiri}/>
 <MenuList sectionName="Donburi"  menuItems={donburi} delete={deleteDonburi}/>
 <MenuList sectionName="Robata"  menuItems={robata} delete={deleteRobata}/>

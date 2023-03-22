@@ -3,12 +3,14 @@ import {BrowserRouter as Router, Link, Routes,  Route, Outlet}  from "react-rout
 import EditMenu from "./EditMenu"
 import PublicMenu from "./PublicMenu"
 
+
 function Header() {
 
   var [aMenuArray, setMenuArray] = useState([{
     mealName: "",
    bodyText: "",
-   image: null,
+   image: "",
+   model: "",
    detailText: "",
    price: "",
     section: ""
@@ -16,8 +18,7 @@ function Header() {
          }]);
         
          const pull_data = (data) => {
-         setMenuArray(data)
-         console.log(data, "datadatadatada");
+        setMenuArray(data)
         };
 
 
@@ -35,10 +36,11 @@ return(
      </header>
      <Routes>
         <Route path="/edit-menu" element={<EditMenu func={pull_data}/>} />
-        <Route path="/public-menu" element={<PublicMenu menuArray={aMenuArray}/>} />
+        <Route path="/public-menu" element={<PublicMenu/>} />
      </Routes>
 </Router>
-      
+     {/* <data data={aMenuArray}></data> */}
+
     </div>
 )
 }

@@ -1,0 +1,29 @@
+.product-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  
+}
+
+.product-list__item {
+    list-style: none;
+    width: 50%;
+}
+/* horizontal scroll bar */
+div.scrollmenu {
+    background-color: #FFF;
+    overflow: auto;
+    white-space: nowrap;
+  }
+  div.scrollmenu a {
+    display: inline-block;
+    color: rgb(11, 10, 10);
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }
+  div.scrollmenu a:hover {
+    background-color: #e3d1d1;
+  }
