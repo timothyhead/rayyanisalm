@@ -80,9 +80,9 @@ function getBase64one(file) {
     let result = reader.result
 
     const img = {
-      preview: URL.createObjectURL(file),
- result
+      preview: result
     }
+
     setSelectedFile(img)
   };
   reader.onerror = function (error) {
@@ -96,22 +96,26 @@ function getBase64two(file) {
   reader.readAsDataURL(file);
   reader.onload = function () {
     let result = reader.result
-    console.log(reader.result);
+    //console.log(reader.result);
     const img = {
-      preview: URL.createObjectURL(file),
- result
+      preview: result
     }
     setSelectedModel(img)
   };
   reader.onerror = function (error) {
     console.log('Error: ', error);
   };
-}
+//   const img = {
+//     preview: file
+//           }
+//           setSelectedModel(img)
+
+ }
 
 
 
 
-   
+
 
 
     return (

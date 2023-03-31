@@ -1,6 +1,8 @@
 
 import React, { useEffect, useRef, useState} from "react";
 import MenuList from "./MenuList";
+import {Buffer} from 'buffer';
+import { object } from "prop-types";
 
 
 
@@ -11,118 +13,80 @@ function Menu(props) {
 
     const [popularItems, setPopularItems] = useState([{ menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
         }]);
     const [coldDishes, setcoldDishes] = useState([{ menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
     const [hotDishes, sethotDishes] = useState([{ menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
     const [mushimono, setMushimono] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
     const [yakiOnigiri, setYakiOnigiri] = useState([{ menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
     }]);
        
     const [donburi, setDonburi] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: "" 
        }]);
        const [robata, setRobata] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [nabe, setNabe] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [sushi, setSushi] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [omakaseSashimi, setOmakaseSashimi] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
-        image: String,
-        model: String
        }]);
        const [assortedSashimi, setAssortedSashimi] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [sushiCombinations, setSushiCombinations] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [veggieRoll, setVeggieRoll] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [rolls, setRolls] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [nonAlcholicBeverages, setNonAlcholicBeverages] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [beerSake, setBeerSake] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [partyCombinationTray, setPartyCombinationTray] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [utensils, setUtensils] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);
        const [ramen, setRamen] = useState([{menuItem:  [],
         detail: [], 
-        sectionName: "",
-        image: String,
-        model: String
+        sectionName: ""
        }]);   
        const [aClass, setAClass]  = useState()
   
@@ -130,27 +94,47 @@ function Menu(props) {
 
       const [menu, setMenu] = useState([{ menuItem:  [],
         detail: [], 
-        sectionName: "Popular-Items",
-        image: String,
-        model: String
+        sectionName: ""
         }])
+        const [menuStored, setMenuStored] = useState([{ menuItem:  [],
+            detail: [], 
+            sectionName: ""
+            }])
        var [id, setId] = useState(0)
-     
+         var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || 
+    window.msIndexedDB;
+    const [isdata, setIsdata] = useState(false)
+    
+   
 
-
-      
 
     
+      var storedMenu = [{ menuItem:  [],
+        detail: [], 
+        sectionName: ""
+        }]
+    
+   
+useEffect(() => {
+    databaseRecall()
+    setIsdata((isdata) => !isdata)
+    console.log('indexedDB: ', indexedDB);
+}, [])
 
 useEffect(() => {
  
  
-  let recoveredMenu = JSON.parse(localStorage.getItem("Menu"))
-  repopulateMenu(recoveredMenu);
- setMenu(recoveredMenu);
+
+console.log("Menu",menuStored);
+  repopulateMenu(menuStored)
+ setMenu(menu != null ? menu : [{ menuItem:  [],
+    detail: [], 
+    sectionName: "Popular-Items"
+    }]);
  setId(JSON.parse(localStorage.getItem("id")));
+
    
-}, [])
+}, [menuStored])
 
 
 
@@ -167,23 +151,126 @@ if (props.mealName !== "") {
        
  
    }, [props.add], [props])
+   useEffect(() => {
+   
+
+ 
+    //add to database (index.db)
+    add(menu)
+     menu?.length > 0 ? localStorage.setItem("id", JSON.stringify(id)) : localStorage.setItem("id", JSON.stringify(0))
+}, [menu])
+  
+
+ function databaseRecall() {
+    console.log("one");
+    setMenuStored(JSON.parse(localStorage.getItem("menu2")));
+
+//     let open = indexedDB.open("MYMenuStoreDatabase1", 2);
+//     open.onerror = function (event) {
+//         console.error("Error", event);
+//       };
+
+// open.onsuccess = function() {
+//     let db  = open.result;
+//    var transaction = db.transaction("menu", "readonly");
+//     console.log("yes!");
+
+
+      
+//         var store = transaction.objectStore("menu");
+//       const getMenu =  store.get(1)
+//      getMenu.onsuccess = function() {
+
+//         setMenuStored(getMenu.result.model)
+
+      
+      
+//         console.log(" databaseRecall", getMenu.result.model[1], "localstore", JSON.parse(localStorage.getItem("menu2")));
+//         transaction.oncomplete = function() {
+//             db.close()
+//         };
+//      }
+//}
+
+ };
+ function add(menu) {
+    localStorage.setItem("menu2", JSON.stringify(menu));
+   console.log( "localstore add", JSON.parse(localStorage.getItem("menu2")))
+ 
+//     let open = indexedDB.open("MYMenuStoreDatabase1", 2);
+//     open.onerror = function (event) {
+//         console.error("Error", event);
+//       };
+
+//     open.onupgradeneeded = function () {
+//         // triggers if the client does not have a database
+//         // initialization
+//        var db = open.result;
+    
+//         var store = db.createObjectStore("menu", { keyPath: "id" });
+    
+//       };
+     
+//       open.onsuccess = function () {
+//         var db = open.result;
+//         var transaction = db.transaction("menu", "readwrite");
+//          var store = transaction.objectStore("menu");
+
+ 
+
+       
+      
+//         store.put({id: 1, model: menu});
+      
+    
+//    var getMenu = store.get(1);
+
+//   getMenu.onsuccess = function() {
+//    console.log(getMenu.result, "MenuMenuMenuIndexDB");
+  
+//   }
+
+
+// transaction.addEventListener("complete", (event) => {
+//     console.log("Transaction was completed");
+   
+//          db.close()
+//   });
+//     };
+ }
 
   
     function populateMenu(props) {
-       
+  
+
+   
+   console.log("menuset");
+
+
+
+
+;
+
+        setMenu(preValue => {
+           return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.preview, model: props.model?.preview, id : id, currency: "$"}]
+           
+        });
         switch (props.section) {
 
        
           
             case "Popular-Items":
-                setPopularItems((preValue) => {
+              
+            
+               setPopularItems((preValue) => {
                
                     return [...preValue, {
                         menuItem:  [props.mealName, props.bodyText],
-                        detail: [props.image?.preview, props.model?.preview], price: props.price,  section: "Popular-Items"
+                        detail: [props.image?.preview,   props.model?.preview], price: props.price,  section: "Popular-Items"
                     }]
                   
                 });
+               
              break;
             case "Cold-Dishes":
                 setcoldDishes((preValue) => {
@@ -393,36 +480,50 @@ if (props.mealName !== "") {
        
        
      }
-     setMenu(preValue => {
-        return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.preview, model: props.model?.preview, id : id, currency: "$"}]
-        
-     });
+    
+  
+   
  setId(id + 1)
-     console.log(id , "cghjxkzl;fjdkslhgjvkclx;bjvkclx;");
+     console.log(id , "cghjxkzl;fjdkslhgjvkclx;bjvkclx;id");
     }
 
+ 
 
-    function repopulateMenu(recoveredMenu) {
 
 
-     
-      recoveredMenu?.forEach(element => {
+
+
+
+
+
+
+    
+ function repopulateMenu(recoveredMenu) {
+
+    console.log("recov", recoveredMenu);
+
+     recoveredMenu?.forEach(element => {
           
+console.log("zzzzzzzzzzzz", element.model?.replace(/=/, ""));
+
+const modelStr = element?.model?.replace(/=/, "");
+const imagestr = element.image
+//replace(/\+/g, '-').replace(/\//g, '_').replace(/\=+$/, '');
   
         switch (element.section) {
 
        
           
             case "Popular-Items":
-              
+            
                 setPopularItems((preValue) => {
-               
+
                     return [...preValue, {
                         menuItem:  [element.mealName, element.bodyText],
-                        detail: [element.image != null ? element.image : "", element.model != null ? element.model : ""], price: element.price,  section: "Popular-Items"
+                        detail: [element.image != null ? imagestr : "", imagestr !== null && element.model], price: element.price,  section: "Popular-Items"
                     }]
                   
-                });
+                }); 
              break;
             case "Cold-Dishes":
                 setcoldDishes((preValue) => {
@@ -633,8 +734,11 @@ if (props.mealName !== "") {
      }
     });
 };
-   
+//}
 
+
+
+   
 
  async function handleSet(event) {
 
@@ -647,6 +751,7 @@ if (props.mealName !== "") {
 
 
 menu?.length > 0 && localStorage.setItem("Menu", JSON.stringify(menu))
+menu?.length > 0 && localStorage.setItem("menu2", JSON.stringify(menu))
 menu?.length > 0 &&  localStorage.setItem("id", JSON.stringify(id));  
  
 
@@ -676,18 +781,7 @@ function deletePopularItems(id) {
      
     }
 
-   useEffect(() => {
-   
-
- 
-    menu?.length > 0 ? localStorage.setItem("Menu", JSON.stringify(menu)) : localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
-        detail: [], 
-        sectionName: "Popular-Items",
-        image: String,
-        model: String
-        }]));
-        menu?.length > 0 ? localStorage.setItem("id", JSON.stringify(id)) : localStorage.setItem("id", JSON.stringify(0))
-   }, [menu])
+  
  
     function deletecoldDishes(id) {
        setcoldDishes(preValue => {
@@ -932,10 +1026,12 @@ function deletePopularItems(id) {
 function clear() {
     localStorage.setItem("Menu", JSON.stringify([{ menuItem:  [],
         detail: [], 
-        sectionName: "Popular-Items",
-        image: String,
-        model: String
+        sectionName: "Popular-Items"
         }]));
+        localStorage.setItem("menu2", JSON.stringify([{ menuItem:  [],
+            detail: [], 
+            sectionName: "Popular-Items"
+            }]));
         localStorage.setItem("id", JSON.stringify(0))
     setMenu([]);
     setPopularItems([])

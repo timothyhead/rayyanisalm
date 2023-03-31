@@ -11,8 +11,16 @@
 .product__button-wrap {
     float: right;
 }
-.card-width {
-width: 30rem;
+
+.image-size {
+    width: 100px;
+   height: 100px;
+}
+.transparency {
+    opacity: 0.65;
+}
+.no-transparency {
+opacity: 0.8;
 }
 
 

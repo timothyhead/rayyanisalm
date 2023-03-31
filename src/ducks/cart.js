@@ -1,5 +1,5 @@
 import { getProduct } from '../ducks/products';
-import 'bootstrap/dist/css/bootstrap.css';
+
 
 // actions
 const CART_ADD   = 'cart/ADD';

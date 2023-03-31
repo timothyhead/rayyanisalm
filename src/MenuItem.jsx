@@ -1,6 +1,7 @@
 
 
 import React from "react";
+import chair from "./chair.usdz"
 
 
 function MenuItem(props) {
@@ -26,7 +27,9 @@ function handleClick() {
 }
 
     return(
+       
         <div >
+         {/* {console.log("modelmodelmodel", model)} */}
         <div  className="margin-bottom-20">
    <h3 className="inline">{MealName}</h3>
    <p  className="inline margin-left-30px">{BodyText}</p>
@@ -36,7 +39,7 @@ function handleClick() {
    
    <div>
     <a rel="ar" href={model}>
-       <img className="image50" src={image} alt="NO IMage"></img>
+       <img className="image50" src={image} alt="No Iage"></img>
     </a>
 
 </div>

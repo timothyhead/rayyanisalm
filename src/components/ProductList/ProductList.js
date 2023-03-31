@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes, { element } from 'prop-types';
 import Product from '../../containers/Product';
-import { Container, Row, Col} from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadMenu } from '../../ducks/products';
+import { Container, Row, Col, Button} from 'react-bootstrap';
 
 const sections = [{sectionName: "Popular-Items",
                      ids: "goto1"            },
@@ -45,10 +47,16 @@ const sections = [{sectionName: "Popular-Items",
                     ]
 var element_to_scroll_to = document.getElementById('anchorName2');
 
-const ProductList = ({ products }) => {
+                   // products
+const ProductList = ({  } ) => {
+ var products = useSelector(state => state.products);
+  const dispatch = useDispatch();
     useEffect(()=> {
-        console.log("Hello data", products[0]);
+        console.log("Hello data", products);
     }, [products])
+
+   
+
     return (
      
 
@@ -67,8 +75,8 @@ const ProductList = ({ products }) => {
      <a href="#goto8" class="sliding-link">Nabe</a>
      <a href="#goto9" class="sliding-link">Sushi</a>
      <a href="#goto10" class="sliding-link">Omakase sashimi</a>
-     <a href="#goto11" class="sliding-link"></a>
-     <a href="#goto12" class="sliding-link">Assorted Sashimi</a>
+     <a href="#goto11" class="sliding-link">Assorted Sashimi</a>
+     <a href="#goto12" class="sliding-link">sushiCombinations</a>
      <a href="#goto13" class="sliding-link">Veggie Roll</a>
      <a href="#goto14" class="sliding-link">Roll</a>
      <a href="#goto15" class="sliding-link">Non_Alcohoilic Beverages</a>
@@ -88,10 +96,11 @@ const ProductList = ({ products }) => {
  <ul>
  <Container>
               <Row>
-        {products.map(product => (
-            
+             {console.log("products")} 
+        {products?.map(product => (
+          
            
-            product.section === section.sectionName  &&
+            product?.section === section.sectionName  &&
          
                 <Col className="col-lg-6 col-md-6 col-sm-12" key={product.id}>
               
@@ -106,16 +115,18 @@ const ProductList = ({ products }) => {
             </Container>
         
       </ul>
-   
-
-
-
 </div>
 
 })}
+<button onClick={() => dispatch(loadMenu())}>click</button>
+{products.forEach((item) => {
+    <h1>product {item}</h1>
+})
+}
         </div>
        
     );
+    
 }
 
 ProductList.propTypes = {
