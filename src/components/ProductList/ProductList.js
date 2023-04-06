@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes, { element } from 'prop-types';
 import Product from '../../containers/Product';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadMenu } from '../../ducks/products';
-import { Container, Row, Col, Button} from 'react-bootstrap';
+import { Container, Row, Col, Button, Stack} from 'react-bootstrap';
+import Cart from '../../containers/Cart';
+
+
+
 
 const sections = [{sectionName: "Popular-Items",
                      ids: "goto1"            },
@@ -48,15 +52,53 @@ const sections = [{sectionName: "Popular-Items",
 var element_to_scroll_to = document.getElementById('anchorName2');
 
                    // products
-const ProductList = ({  } ) => {
- var products = useSelector(state => state.products);
-  const dispatch = useDispatch();
-    useEffect(()=> {
-        console.log("Hello data", products);
-    }, [products])
+const ProductList = ( props ) => {
+    const [cart, setCart] = useState(); 
+    const  [retrivedData, setRetrivedData] = useState();
+   const [idOfRemoved, setIdOfRemoved] = useState();
 
+
+
+
+
+   function isRemoveFromCart(obj) {
+
+setCart(obj)
+
+   }
+// get data from backend to load product list
+ useEffect(() => {
+    const data1 =   fetch("http://localhost:8080/loadMenu")
+    .then( res =>  {
+ 
+return res.json() 
+    
+    })
    
+    .then((data) => {
+ 
+ setRetrivedData(data)
+   
+     
+    })
+    .catch((err) => {
+       console.log(err.message);
+       console.log("error");
+ 
+    });
 
+ }, [])
+
+// pull data from product.js
+function pull_data(data) {
+console.log("data in productlist 94", data);
+setCart(data)
+}
+
+// pull data from cart.js
+function pull_idOfRemoved(id) {
+  setIdOfRemoved(id)
+}
     return (
      
 
@@ -94,35 +136,36 @@ const ProductList = ({  } ) => {
  <h3 id={section.ids}>{section.sectionName}</h3>
 
  <ul>
+
  <Container>
               <Row>
-             {console.log("products")} 
-        {products?.map(product => (
+     
+        {retrivedData?.map((product) => (
           
-           
+          
             product?.section === section.sectionName  &&
          
                 <Col className="col-lg-6 col-md-6 col-sm-12" key={product.id}>
-              
+                
    
-        <Product {...product} />
+        <Product {...product} func={pull_data} cart={cart} key={product.id} idOfRemoved={idOfRemoved}/>
+        
         </Col>
-      
+    
             
         ))}
+   
        
               </Row>
             </Container>
+        
         
       </ul>
 </div>
 
 })}
-<button onClick={() => dispatch(loadMenu())}>click</button>
-{products.forEach((item) => {
-    <h1>product {item}</h1>
-})
-}
+
+<Cart cart={cart} func={pull_idOfRemoved}/>
         </div>
        
     );

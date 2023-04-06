@@ -1,6 +1,8 @@
 
 
 import React from "react";
+import { Card, Row, Col, Button } from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
 import chair from "./chair.usdz"
 
 
@@ -27,9 +29,9 @@ function handleClick() {
 }
 
     return(
-       
-        <div >
-         {/* {console.log("modelmodelmodel", model)} */}
+       <div>
+        {/* <div >
+        
         <div  className="margin-bottom-20">
    <h3 className="inline">{MealName}</h3>
    <p  className="inline margin-left-30px">{BodyText}</p>
@@ -48,7 +50,32 @@ function handleClick() {
     Delete
    </button>
      
-        </div>
+        </div> */}
+<div>
+ <Container>
+ <Row>
+ <Col col>
+ <Card style={{width: '100%'}}>
+<Card.Title>{MealName}</Card.Title>
+<Card.Text>{BodyText}</Card.Text>
+<Card.Text>{price}</Card.Text>
+    </Card>
+    </Col>
+
+<Col>
+<Card style={{width: '100px'}}>
+<a rel="ar" href={model}>
+    <Card.Img variant="top"  className="image100" src={image} alt="No Image">
+
+    </Card.Img>
+    </a>
+    <Button variant="outline-danger" onClick={handleClick}>Delete</Button>
+    </Card>
+</Col>
+ </Row>
+ </Container>
+</div>
+</div>
     )
 }
 

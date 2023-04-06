@@ -1,40 +1,80 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
 
 
-const CartItem = ({ mealName, price, onClick }) => {
+
+function CartItem( props) {
+    const [numItems, setNumItems] = useState(1)// { price, onClick, currency , func, totalValue},
+    const [newPrice, setNewPrice] = useState()
+    const [isIncreasing, setIsIncreasing] = useState(true)
+    const [id, setId] = useState();
+    var isFirstPrice = false
+
+
+    useEffect(() => {
+        if (isFirstPrice === false) {
+            isFirstPrice = true;
+           
+        } 
+        if (isFirstPrice === true) {
+       if (isIncreasing === true) {
+        // func(price);
+        console.log("+");
+       }
+       if (isIncreasing === false) {
+        // func(-price);
+        console.log("-");
+       }
+           
+        }
+    //    totalValue(newPrice) 
+    }, [newPrice])
+
+    function handleClick() {
+props.func(props.item?.id)
+
+
+    }
+   
+function increment() {
+   setIsIncreasing(true)
+    setNumItems(numItems + 1);
+    // setNewPrice(newPrice + price);
+}
+function decrement() {
+    if (numItems > 1) {
+       setIsIncreasing(false)
+        setNumItems(numItems - 1);
+        // setNewPrice(newPrice - price);
+    }
+   
+}
+
+
+// className="btn btn-danger btn-xs"
+
     return (
         <div className="cart-item">
             <div>
-                <button className="btn btn-danger btn-xs" onClick={onClick}>X</button>
-                <span className="cart-item__name">{mealName}</span>
+               <Button variant='danger' size="lg"  onClick={handleClick}>X</Button>
+                <span className="cart-item__name">{props.item?.mealName}</span>
             </div>
-            <div className="cart-item__price">{price}</div>
-            <form action="https://public.herotofu.com/v1/61bc7830-cf9d-11ed-9802-15820248f1c1" method="post" accept-charset="UTF-8">
+            <div className="cart-item__price">{props.item?.price}</div>
   <div>
-    <label for="name">Your Name</label>
-    <input name="Name" id="name" type="text" required />
+  <h3>{numItems}</h3>
+    <Button onClick={increment}>+</Button>
+    <Button onClick={decrement}>-</Button>
   </div>
-  <div>
-    <label for="email">Your Email</label>
-    <input name="Email" id="email" type="email" required  />
-  </div>
-  <div>
-    <input type="submit" value="Download CTA" />
-    <div style="text-indent:-99999px; white-space:nowrap; overflow:hidden; position:absolute;" aria-hidden="true">
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
-    </div>
-  </div>
-</form>
         </div>
     );
 }
 
-CartItem.propTypes = {
-    mealName: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    // currency: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
-}
+// CartItem.propTypes = {
+//     mealName: PropTypes.string.isRequired,
+//     price: PropTypes.number.isRequired,
+//     // currency: PropTypes.string.isRequired,
+//     onClick: PropTypes.func.isRequired
+// }
 
 export default CartItem;

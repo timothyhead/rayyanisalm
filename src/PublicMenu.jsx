@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Cart from './containers/Cart';
 import ProductList from './containers/ProductList';
 
+
+
 function PublicMenu(props) {
+
+  
+
+       
+    
 
  return (
     <div className="container">
@@ -15,7 +22,7 @@ function PublicMenu(props) {
             <ProductList />
         </div>
         <div className="col-md-4">
-            <Cart />
+           
         </div>
     </div>
 

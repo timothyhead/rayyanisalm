@@ -1,36 +1,66 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
 
 const myImage = null
+var count = 0
+var isinit = false
+
     
 
 function Product(props) {
 
    
-   const handleClick = () => {
-        const { id, addToCart, removeFromCart, isInCart } = props;
+  
+    
+        const { mealName, price, bodyText, image,  model, id, func, cart} = props;
 
-        if (isInCart) {
-            removeFromCart(id);
-        } else {
-            addToCart(id);
+        const [isInCart, setIsinCart] = useState(false);
+
+        const [isSet, SetIsSet] = useState(false);
+      
+
+     
+     
+       useEffect(() => {
+if (props.idOfRemoved === id) {
+    setIsinCart(false)
+}
+    
+       }, [props.idOfRemoved])
+
+        const handleClick = () => {
+          
+    setIsinCart(isInCart => !isInCart)
+           
         }
-    }
-    
-    
-    
-        const { mealName, price, bodyText, image, isInCart, model} = props;
-     console.log("image 25 Product/productjs", image);
+      
+        
+       
+      useEffect(() => {
+       console.log("is in cart", isInCart);
+        if (isInCart) {
+           func({
+                isInCart: true,
+                id: id
+            })
+        } else {
+          func({
+                isInCart: false,
+                id: id
+            })
+        }
 
+      }, [isInCart])
+   
+   
         return (
            
-            <div >
-        {console.log("Product", mealName)}
-
+            <div className='margin-bottom-20'>
+       
 <Card>
-                <Card.Body>
+                <Card.Body >
                     <Card.Title>{mealName}</Card.Title>
                     <Card.Text>{bodyText}</Card.Text>
                     <Card.Text>{price}</Card.Text>
@@ -80,15 +110,15 @@ function Product(props) {
     }
 
 
-Product.propTypes = {
-    id: PropTypes.number,
-     name: PropTypes.string,
-    price: PropTypes.number,
-    currency: PropTypes.string,
-    image: PropTypes.string,
-    isInCart: PropTypes.bool.isRequired,
-    addToCart: PropTypes.func.isRequired,
-    removeFromCart: PropTypes.func.isRequired,
-}
+// Product.propTypes = {
+//     id: PropTypes.number,
+//      name: PropTypes.string,
+//     price: PropTypes.number,
+//     currency: PropTypes.string,
+//     image: PropTypes.string,
+//     isInCart: PropTypes.bool.isRequired,
+//     addToCart: PropTypes.func.isRequired,
+//     removeFromCart: PropTypes.func.isRequired,
+// }
 
 export default Product;

@@ -61,15 +61,15 @@ export function isInCart(state, props) {
 }
 
 export function getItems(state, props) {
-    return state.cart.items.map(id => getProduct(state, { id }));
+    return state.cart?.items?.map(id => getProduct(state, { id }));
 }
 
 export function getCurrency(state, props) {
-    return state.cart.currency;
+    return state.cart?.currency && state.cart.currency;
 }
 
 export function getTotal(state, props) {
-    return state.cart.items.reduce((acc, id) => {
+    return state.cart?.items && state.cart.items?.reduce((acc, id) => {
         const item = getProduct(state, { id });
         return acc + item.price;
     }, 0);

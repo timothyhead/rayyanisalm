@@ -75,51 +75,70 @@ var myData = null
 
 
 
-
-
-
-
-
-
-// function retriveData() {
-//   var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || 
-//   window.msIndexedDB;
-//   let open = indexedDB.open("MYMenuStoreDatabase1", 2);
-//   open.onerror = function (event) {
-//       console.error("Error", event);
-//     };
-//     open.onsuccess = function() {
-//        let db  = open.result;
-//       var transaction = db.transaction("menu", "readonly");
-//        console.log("yes in products.js");
+//      fetch("/api", {cache: "default"})
+//      .then( res =>  {
+      
    
+      
+//       for(const header of res.headers) {
+        
+//         if (header[0] == "etag") { 
+// etag = header[1]
+// return res.json() 
+//         }
+//       }
+     
+//     } )
    
-         
-//            var store = transaction.objectStore("menu");
-//          const getMenu =  store.get(1)
-//         getMenu.onsuccess = function() {
-//   localStorage.setItem("data2", JSON.stringify(getMenu.result.model))
+//      .then((data) => {
  
-//         // setData(getMenu.result.model)
-//           console.log("data", getMenu.result.model,  JSON.parse(localStorage.getItem('data2')));
+//       if (etag != localStorage.getItem("Etag")) {
+   
+//          let myData = JSON.parse(data)
+//          setPosts(myData);
+//          setNoChangeToOrders(false);
+//          localStorage.setItem("Etag", etag)
+    
+//       } else {
+       
+//             setNoChangeToOrders(true);
          
-//            console.log(" databaseRecall", getMenu.result.model[1]);
+//       }
+
+        
+       
+//      })
+//      .catch((err) => {
+//         console.log(err.message);
+//         console.log("error");
+ 
+        
+//      });
+
+let retriveData = null
+ const data1 =   fetch("http://localhost:8080/loadMenu")
+     .then( res =>  {
   
+return res.json() 
+     
+     })
+    
+     .then((data) => {
+  
+  retriveData = data
+    
+      
+     })
+     .catch((err) => {
+        console.log(err.message);
+        console.log("error");
+  
+     });
 
-           
-//        };
-//       open.onerror = (err)=> {
-//         console.error(`Error to get menu data in product.js: ${err}`)
-//     }
-//        transaction.oncomplete = function() {
-//         db.close()
-//     };
-//   };
-// };
- 
- const retriveData = JSON.parse(localStorage.getItem("menu2"));
- console.log("retriied data", JSON.parse(localStorage.getItem("menu2")));
-export { retriveData }
+
+
+
+export  { retriveData }
 
   
 

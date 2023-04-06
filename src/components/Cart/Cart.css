@@ -24,3 +24,10 @@
   line-height: 1.1em;
   text-align: right;
 }
+.my-style {
+text-indent: "-99999px";
+white-space: "nowrap";
+overflow: "hidden";
+position: "absolute";
+
+}

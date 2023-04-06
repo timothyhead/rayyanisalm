@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import Menu from "./Menu";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
+
 
 
 function EditMenu(props) {
@@ -80,7 +87,7 @@ function getBase64one(file) {
     let result = reader.result
 
     const img = {
-      preview: result
+      preview:  result
     }
 
     setSelectedFile(img)
@@ -119,25 +126,101 @@ function getBase64two(file) {
 
 
     return (
-      <div className="edit-menu-div" id="scroll-div">
-        <div className="centre border-red corner form-div silk"> 
-        <div className="form-inner-div orange inline corner" >
+      <div  id="scroll-div">
+      <Container>
+      <Row>
+        <Col xs="12" lg="10" md="10" sm="12">
+        
+     
+   
+        <div > 
+        <div  >
 <h1 className="green corner centre-text">Create and Edit Menu</h1>
 
-
-
-
-
-
-<form >
-
-      <label  className="form-input-width" >Enter Section Name:
+{/* <Form.Select>
+        <option value="Popular-Items">Popular Items</option>
+        </Form.Select>
+        <Form.Select>
+        <option value="Cold-Dishes">Cold Dishes</option>
+        </Form.Select>
        
-        <select  className="form-input-width margin-left-5px" value={sectionName} onChange={handleChange}>
+        <Form.Select>
+        <option value="Hot-Dishes">Hot Dishes</option>
+        </Form.Select>
+    
+        <Form.Select>
+        <option value="Mushimono">Mushimono</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Yaki-Onigiri">Yaki Onigiri</option>
+        </Form.Select>
+      
+        <Form.Select>
+        <option value="Donburi">Donbrui</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Robata">Robata</option>
+        </Form.Select>
+        
+        <Form.Select>
+        <option value="Nabe">Nabe</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Sushi">Sushi</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Omakase-Sashimi">Omakase Sashimi</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Assorted-Sashimi">Assorted Sashimi</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Sushi-Combinations">Sushi Combinations</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Veggie-Roll">Veggie Roll</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Rolls">Rolls</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Non-Alcholic-Beverages">Non Alcholic Beverages</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Beer-&-Sake">Beer & Sake</option>
+        </Form.Select>
+        
+        <Form.Select>
+        <option value="Party-Combination-Tray">Party Combination Tray</option>
+        </Form.Select>
+       
+        <Form.Select>
+        <option value="Utensils">Utensils</option>
+        </Form.Select>
+      
+        <Form.Select>
+        <option value="Ramen">Ramen</option>
+        </Form.Select> */}
+  
+
+<Form>
+
+<Form.Group>
+<Form.Select value={sectionName} onChange={handleChange}>
         <option value="Popular-Items">Popular Items</option>
         <option value="Cold-Dishes">Cold Dishes</option>
         <option value="Hot-Dishes">Hot Dishes</option>
-        <option value="Mushimono">Mushimono</option>
+        <option value="Mushimono" >Mushimono</option>
         <option value="Yaki-Onigiri">Yaki Onigiri</option>
         <option value="Donburi">Donbrui</option>
         <option value="Robata">Robata</option>
@@ -153,68 +236,66 @@ function getBase64two(file) {
         <option value="Party-Combination-Tray">Party Combination Tray</option>
         <option value="Utensils">Utensils</option>
         <option value="Ramen">Ramen</option>
-      </select>
-      </label>
-      <label className="block">Enter Meal Name:
-        <input className="form-input-width margin-left-25px"
-          type="text" 
-          value={mealName}
-          onChange={(e) => setMealName(e.target.value)}
-        />
-      </label>
-      <label className="block">Enter Body Text:
-        <textarea className="form-input-width margin-left-34px"
-          type="text" 
-          value={bodyText}
-          onChange={(e) => setBodyText(e.target.value)}
-        />
-      </label>
-      <label className="block"> Enter price:
-      <input className="form-input-width margin-left-25px"
-          type="number" 
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-      </label>
-  <label>Select 3d model file
-  <input  className="margin-left" type="file" name="file" onChange={changeHandler2} />
-  </label>
-  <label className="block">Select thumbnail image file
-  <input  className="margin-left" type="file" name="file" onChange={changeHandler1} />
-  </label>
- 
-    </form>
+</Form.Select>
+<Form.Label>Enter Meal Name:</Form.Label>
+<Form.Control type="text" value={mealName} onChange={(e) => setMealName(e.target.value)}/>
+<Form.Label>Enter Body Text:</Form.Label>
+<Form.Control   as="textarea" rows={3} type="text" value={bodyText}  onChange={(e) => setBodyText(e.target.value)}/>
+<Form.Label>Enter price:</Form.Label>
+<Form.Control   type="number" value={price}  onChange={(e) => setPrice(e.target.value)}/>
+<Form.Label>Select 3d model file</Form.Label>
+<Form.Control   type="file" name="file"  onChange={changeHandler2}/>
+<Form.Label>Select thumbnail image file</Form.Label>
+<Form.Control   type="file" name="file"  onChange={changeHandler1}/>
+
+
+
+
+
+</Form.Group>
+
+</Form>
+
+
+
     <div>
     {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="placeholder"></img>: null }
     
     </div>
    
     </div>
-
-    <div className="instruction-box-spacer-div corner">
+      </div>
+    </Col>
+    <Col xs="0" lg="2" md="2" sm="12">
+    <div  >
 
     </div>
-     <div className="info-box-and-add-button">
-      <div className="add-button-div ">
-<button onClick={() => {
+     <div >
+      <div >
+<Button onClick={() => {
 handleClick()
-}}>ADD</button>
+}}>ADD</Button>
       </div>
-    <div className="instruction-box-div green corner">
+    <div >
 <h5>Fill out the form to edit the menu. When done click to set the menu at the bottom</h5>
 </div>
 
  </div>
+ 
+</Col>
 
 
-
- 
-        </div>
-        <div className="to-retaurant-app-menu-div">
+      
+        </Row>
+        <Row>
+       
+        {/* <div className="to-retaurant-app-menu-div"> */}
         <Menu isRedBorder={true} mealName={mealName} bodyText={bodyText} image={selectedFile} model={selectedModel} price={Number(price)} section={sectionName} add={isClicked}  func={pull_data}/>
-        </div>
+        {/* </div> */}
+        </Row>
         <div>
 </div>
+ </Container>
     
         </div>
     )
