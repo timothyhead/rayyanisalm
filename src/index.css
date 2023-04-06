@@ -25,248 +25,23 @@ div {
   border: 5px dashed #FFD5C2;
 }
 
-.red {
-  background-color: #ED220D;
-}
+
 .green {
   background-color: #CDF56E;
 }
-.orange {
-  background-color: #F28F3B;
-}
-.silk {
-  background-color: #FFD5C2;
-}
-.white {
-  background-color: white;
-  border-width: thin;
-  border-radius: 25px;
-}
-.corner {
-  border-radius: 25px;
-}
-.flex-container-verticle {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-.flex-container-horizontal {
-display:  flex;
-flex-direction: row;
-}
-.flex-container-row {
-  display: flex;
-  flex-direction: row;
-  min-width: 100vh;
-}
-.menuSectionMargin {
-  margin-left: 150px;
-}
+
 .block {
   display: block;
 }
-.inline {
-  display: inline;
-}
-.centre-100 {
-  margin: auto;
-  width: 100%;
-}
-.centre {
-  margin: auto;
-  width: 50%;
-}
-.centre-wide {
-  margin: auto;
-  width: 61%;
-}
-.centre-buttons {
-text-align: center;
-}
-
-.border-red {
-  border-width: medium;
-  border-color: #ED220D;
-  border-style: solid;
-}
-
-
-.menuSectionMargin {
-  margin-left: 150px;
-}
-
-
-.left-aligned {
-  text-align: left;
-}
-
-/* edit menu form margins*/
-.margin-left-25px{
-  margin-left: 25px;
-}
-.margin-left-5px{
-  margin-left: 5px;
-}
-.margin-left-34px{
-  margin-left: 34px;
-}
-.margin-left-30px{
-  margin-left: 30px;
-}
-.margin-left-38px{
-  margin-left: 38px;
-}
-.margin-bottom-30 {
-  margin-bottom: 30px;
-}
-.margin-bottom-20 {
-  margin-bottom: 20px;
-}
-.margin-left {
-  margin-left: 47px;
-}
-.margin-top-city {
-  margin-top: 30px;
-}
-.margin-bottom-150 {
-  margin-bottom: 200px;
-}
-
-
-.form-div {
-  height: 31%;
-  width: 80%;
-
-}
-.edit-menu-div {
- width: 90%;
-
-}
-.edit-menus-menu-div {
-  height: 69%;
-  width:  80%;
-  margin:  auto;
-  
- 
-}
-.menu-div-for-to-retaurant-app-menu {
-  height: 100%;
-}
-/* .form-inner-div {
-  /* width: 69%; */
-  /* height: 100%; */
- /* float: left; */
-/* } */ *
-.instruction-box-div {
-  height: 50%;
-  width: 50%;
-
-}
-.info-box-and-add-button {
-  position: relative;
-  right: -10%;
 
 
 
-}
-.add-button-div {
-  height: 12%;
-  width: 50%;
+.cart-div {
 
-
-}
-.instruction-box-spacer-div {
-  height: 60%;
-
-}
-.image50 {
-  width: 50px;
-  height: 50px;
-}
-.image100 {
-  width: 100px;
-  height: 100px;
-}
-.menu-sections-postion {
-  position: relative;
-  float: left;
-  padding-left: 10%;
-}
-
-
-
-.qty-postion {
-  position: relative;
-  left: 25%
-}
-.width-100 {
-  width: 100%;
-}
-.width-50 {
-  width: 50%;
-  background-color: pink;
-}
-
-.golden-ratio-width-large {
-  width: 64.7%;
-}
-.golden-ratio-width-small {
-  width: 35.3%;
-}
-.float-left-with-padding {
-float: left;
-padding-left: 5%;
-}
-.positon-absolute {
-position: absolute;
-
-}
-.left-box {
-  float:left;
-  width:25%;
-  height:18px;
- 
-
-}
-.middle-box{
-  float:left;
-  width:50%;
-  height:1px;
-  background-color: #FFD5C2;
-
-}
-.right-box{
-  float:right;
-  width:25%;
-  height:1px;
-  background-color: #FFD5C2;
-
-}
-.capitalize {
-  text-transform: capitalize;
-
-}
-.vertical-center {
-  margin: 0;
-  position: relative;
-
-  top: 25%;
- 
-}
-
-
-.orders-name-height {
-  height: 60px;
-
-}
-.section-height {
-  height: 100px;
-}
-
-.destruct {
-  background-color: red;
-  color: white;
-  border-radius: 16px;
+position: fixed;
+top:0;
+right: 10%;
+z-index:  1;
 }
 .links {
   display: block;
@@ -279,9 +54,15 @@ position: absolute;
   margin-right: 10px;
 }
 
-
-
-
+.password-form-width {
+  width: 10%;
+}
+.z {
+  z-index:  1;
+}
+.image-size {
+  width: 50Px;
+}
 
 
 

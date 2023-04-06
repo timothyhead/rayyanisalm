@@ -86,39 +86,10 @@ if (props.idOfRemoved === id) {
 
 
    
-        
-          
-           
-         
-                {/* <div className="caption">
-                    <h3>{name}</h3>
-                   
-                    <div className="product__price">{price} {currency}</div>
-                    <div className="product__button-wrap">
-                    <img src={process.env.PUBLIC_URL + image}   alt="product" />
-                        <button
-                            className={isInCart ? 'btn btn-danger' : 'btn btn-primary'}
-                            onClick={this.handleClick}
-                        >
-                            {isInCart ? 'Remove' : 'Add to cart'}
-                        </button>
-                     
-                    </div>
-                </div> */}
             </div>
         );
     }
 
-
-// Product.propTypes = {
-//     id: PropTypes.number,
-//      name: PropTypes.string,
-//     price: PropTypes.number,
-//     currency: PropTypes.string,
-//     image: PropTypes.string,
-//     isInCart: PropTypes.bool.isRequired,
-//     addToCart: PropTypes.func.isRequired,
-//     removeFromCart: PropTypes.func.isRequired,
 // }
 
 export default Product;

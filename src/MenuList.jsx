@@ -40,13 +40,13 @@ return (
 
     
 
+
  
     {
     
    props.menuItems?.map( function(item, index) {
-   
-    return <Col  className="col-lg-4 col-md-6 col-sm-12 col-xs-12" > 
- 
+  
+    return  <Col  className=" col-sm-auto col-md-auto col-lb-auto col-xl-auto col-auto d-flex" > 
     <MenuItem  id={index} menuItem={item} onDelete={handleClick}  key={index}/>
     </Col>
   
@@ -54,9 +54,11 @@ return (
  
   
     })
+   
   
     
     }
+
  
   
 

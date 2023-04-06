@@ -18,6 +18,9 @@ function EditMenu(props) {
      var [isClicked, setIsClicked] = useState(false);
      const [selectedFile, setSelectedFile] = useState();
      const [selectedModel, setSelectedModel] = useState();
+     const [storedPassword,  setStoredPassword] = useState()
+    
+  
 
   
     
@@ -31,7 +34,7 @@ const handleChange = event => {
   
 }
 const pull_data = (data) => {
-  props.func(data)
+  props.passUpPassword(data)
 };
 
 
@@ -41,12 +44,14 @@ useEffect(() => {
  setBodyText("")
  setSelectedFile()
  setIsClicked(false)
+ props.sendUpIsInit(false)
 
   }, [])
+ 
 
 
   function handleClick() {
-
+console.log("click");
   setIsClicked(isClicked = !isClicked)
 
   setIsClicked((state) => {
@@ -121,12 +126,25 @@ function getBase64two(file) {
 
 
 
+function handlePassowordChange() {
+  props.passUpPassword(storedPassword)
+}
+
 
 
 
 
     return (
       <div  id="scroll-div">
+      <div>
+      <Form className="password-form-width">
+      <Form.Group>
+      <Form.Label>Change password</Form.Label>
+      <Form.Control type="password" value={storedPassword} onChange={(e) => setStoredPassword(e.target.value)}/>
+      <Button onClick={handlePassowordChange}>Update</Button>
+      </Form.Group>
+      </Form>
+      </div>
       <Container>
       <Row>
         <Col xs="12" lg="10" md="10" sm="12">
@@ -137,85 +155,12 @@ function getBase64two(file) {
         <div  >
 <h1 className="green corner centre-text">Create and Edit Menu</h1>
 
-{/* <Form.Select>
-        <option value="Popular-Items">Popular Items</option>
-        </Form.Select>
-        <Form.Select>
-        <option value="Cold-Dishes">Cold Dishes</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Hot-Dishes">Hot Dishes</option>
-        </Form.Select>
-    
-        <Form.Select>
-        <option value="Mushimono">Mushimono</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Yaki-Onigiri">Yaki Onigiri</option>
-        </Form.Select>
-      
-        <Form.Select>
-        <option value="Donburi">Donbrui</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Robata">Robata</option>
-        </Form.Select>
-        
-        <Form.Select>
-        <option value="Nabe">Nabe</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Sushi">Sushi</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Omakase-Sashimi">Omakase Sashimi</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Assorted-Sashimi">Assorted Sashimi</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Sushi-Combinations">Sushi Combinations</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Veggie-Roll">Veggie Roll</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Rolls">Rolls</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Non-Alcholic-Beverages">Non Alcholic Beverages</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Beer-&-Sake">Beer & Sake</option>
-        </Form.Select>
-        
-        <Form.Select>
-        <option value="Party-Combination-Tray">Party Combination Tray</option>
-        </Form.Select>
-       
-        <Form.Select>
-        <option value="Utensils">Utensils</option>
-        </Form.Select>
-      
-        <Form.Select>
-        <option value="Ramen">Ramen</option>
-        </Form.Select> */}
+
   
 
 <Form>
 
-<Form.Group>
+
 <Form.Select value={sectionName} onChange={handleChange}>
         <option value="Popular-Items">Popular Items</option>
         <option value="Cold-Dishes">Cold Dishes</option>
@@ -237,6 +182,7 @@ function getBase64two(file) {
         <option value="Utensils">Utensils</option>
         <option value="Ramen">Ramen</option>
 </Form.Select>
+<Form.Group>
 <Form.Label>Enter Meal Name:</Form.Label>
 <Form.Control type="text" value={mealName} onChange={(e) => setMealName(e.target.value)}/>
 <Form.Label>Enter Body Text:</Form.Label>
@@ -259,7 +205,7 @@ function getBase64two(file) {
 
 
     <div>
-    {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="placeholder"></img>: null }
+    {selectedFile ? <img class="image-size centre" src={selectedFile.preview} alt="placeholder"></img>: null }
     
     </div>
    
@@ -272,7 +218,7 @@ function getBase64two(file) {
     </div>
      <div >
       <div >
-<Button onClick={() => {
+<Button className="z" onClick={() => {
 handleClick()
 }}>ADD</Button>
       </div>

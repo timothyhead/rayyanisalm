@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes, { element } from 'prop-types';
-import Product from '../../containers/Product';
-import { useDispatch, useSelector } from 'react-redux';
-import { loadMenu } from '../../ducks/products';
+import Product from '../Product';
 import { Container, Row, Col, Button, Stack} from 'react-bootstrap';
-import Cart from '../../containers/Cart';
+import Cart from '../Cart'
 
 
 
@@ -91,7 +89,7 @@ return res.json()
 
 // pull data from product.js
 function pull_data(data) {
-console.log("data in productlist 94", data);
+
 setCart(data)
 }
 
@@ -165,7 +163,9 @@ function pull_idOfRemoved(id) {
 
 })}
 
-<Cart cart={cart} func={pull_idOfRemoved}/>
+<Cart  className="cart-div" cart={cart} func={pull_idOfRemoved}/>
+
+
         </div>
        
     );

@@ -1,18 +1,30 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Cart from './containers/Cart';
-import ProductList from './containers/ProductList';
+
+import ProductList from "./components/ProductList";
+
 
 
 
 function PublicMenu(props) {
+    const [password, setPassword] = useState()
+    const  [storedPassword, setStoredPassword] = useState("123456")
+    const [isLoginVis, setIsLoginVis] = useState(false)
 
-  
+  useEffect(() => {
+    props.sendUpIsInit(true)
+  }, [])
 
-       
+    function changePassword(changedPassword) {
+        console.log("password", changedPassword, password,);
+        setStoredPassword(changedPassword)
+      }
+      
     
 
  return (
     <div className="container">
+   
+    
     <div className="row">
         <div className="col-md-12">
         </div>

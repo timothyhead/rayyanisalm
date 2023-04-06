@@ -99,9 +99,14 @@ console.log("items", data);
 setItems(data)
   };
 
+  function changeInTotalValue(price) {
+    console.log("price", price, newTotal);
+    setNewTotal(newTotal + price)
+  }
+
     
     return (
-        <div>
+        <div className='cart-div'>
 
             <h3>Shopping Cart</h3>
           
@@ -113,7 +118,7 @@ setItems(data)
                         {items?.length > 0 && (
                             <div className="cart__body">
                                 {items?.map(item => (
-                                    <CartItem key={item.id} item={item}  func={pull_data}  totalValue={"67"} />
+                                    <CartItem key={item.id} item={item}  func={pull_data}  changeInTotalValue={changeInTotalValue} />
                                 ))}
                             </div>
                         )}

@@ -1,9 +1,10 @@
 
 
 import React from "react";
-import { Card, Row, Col, Button } from "react-bootstrap";
+import { Card, Row, Col, Button, Stack } from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
-import chair from "./chair.usdz"
+
+
 
 
 function MenuItem(props) {
@@ -29,52 +30,29 @@ function handleClick() {
 }
 
     return(
-       <div>
-        {/* <div >
-        
-        <div  className="margin-bottom-20">
-   <h3 className="inline">{MealName}</h3>
-   <p  className="inline margin-left-30px">{BodyText}</p>
-   <h4 className="inline margin-left-30px">{price} </h4>
-   </div>
-   <details className="centre margin-bottom-30 inline">
-   
-   <div>
-    <a rel="ar" href={model}>
-       <img className="image50" src={image} alt="No Iage"></img>
-    </a>
 
-</div>
-   </details>
-   <button className="inline" onClick={handleClick}>
-    Delete
-   </button>
-     
-        </div> */}
-<div>
- <Container>
- <Row>
- <Col col>
- <Card style={{width: '100%'}}>
-<Card.Title>{MealName}</Card.Title>
-<Card.Text>{BodyText}</Card.Text>
-<Card.Text>{price}</Card.Text>
-    </Card>
-    </Col>
+        <div>
 
-<Col>
-<Card style={{width: '100px'}}>
+
+ 
+ <Card style={{ width: '18rem' }}>
+
+ <Card.Body>
+ <Card.Title>{MealName}</Card.Title>
+ <Card.Text>{BodyText}</Card.Text>
+ <Card.Text>{price}</Card.Text>
+
+
+</Card.Body>
 <a rel="ar" href={model}>
-    <Card.Img variant="top"  className="image100" src={image} alt="No Image">
-
+    <Card.Img variant="bottom"  className="image-size" src={image} alt="No Image">
     </Card.Img>
     </a>
-    <Button variant="outline-danger" onClick={handleClick}>Delete</Button>
+    <Button  variant="outline-danger" size="sm" onClick={handleClick}>Delete</Button>
     </Card>
-</Col>
- </Row>
- </Container>
-</div>
+ 
+
+
 </div>
     )
 }
