@@ -51,7 +51,7 @@ useEffect(() => {
 
 
   function handleClick() {
-console.log("click");
+
   setIsClicked(isClicked = !isClicked)
 
   setIsClicked((state) => {
@@ -108,7 +108,7 @@ function getBase64two(file) {
   reader.readAsDataURL(file);
   reader.onload = function () {
     let result = reader.result
-    //console.log(reader.result);
+
     const img = {
       preview: result
     }
@@ -141,7 +141,7 @@ function handlePassowordChange() {
       <Form.Group>
       <Form.Label>Change password</Form.Label>
       <Form.Control type="password" value={storedPassword} onChange={(e) => setStoredPassword(e.target.value)}/>
-      <Button onClick={handlePassowordChange}>Update</Button>
+      <Button onClick={handlePassowordChange} size="lg">Update</Button>
       </Form.Group>
       </Form>
       </div>

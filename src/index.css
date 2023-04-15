@@ -50,19 +50,21 @@ z-index:  1;
   margin-right: auto;
   width: 8em
 }
-.sliding-link {
-  margin-right: 10px;
+.margin-bottom-20 {
+  margin-bottom: 20px;
 }
 
 .password-form-width {
-  width: 10%;
+  width: 30%;
+ padding-left: 8%;
 }
 .z {
   z-index:  1;
 }
 .image-size {
-  width: 50Px;
+  width: 100px;
 }
+
 
 
 

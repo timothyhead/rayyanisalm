@@ -39,7 +39,7 @@ if (props.idOfRemoved === id) {
         
        
       useEffect(() => {
-       console.log("is in cart", isInCart);
+
         if (isInCart) {
            func({
                 isInCart: true,
@@ -59,7 +59,7 @@ if (props.idOfRemoved === id) {
            
             <div className='margin-bottom-20'>
        
-<Card>
+<Card >
                 <Card.Body >
                     <Card.Title>{mealName}</Card.Title>
                     <Card.Text>{bodyText}</Card.Text>
@@ -73,11 +73,14 @@ if (props.idOfRemoved === id) {
                <Button variant={isInCart ? "danger" : "outline-primary"}     className={isInCart ? "no-transparency" : "transparency"}
                             onClick={handleClick}
                         > {isInCart ? 'Remove' : 'Add to cart'}</Button>
-            
-               <a rel="ar" href={model}>
+            {/* $(model)#applePayButtonType=plain */}
+               <a rel="ar"  href={model}>
          <Card.Img className='image-size' variant='bottom' src={image}></Card.Img>  
            {/* // <img  src={image}></img> */}
                </a>
+               {/* <a rel="ar" id="ApplePay" href="alarm‑clock.usdz#applePayButtonType=plain&checkoutTitle=Retro%20Alarm%20Clock&checkoutSubtitle=With%20built-in%20FM%20tuner&price=$92.50">
+    <img src="alarm-clock-thumbnail.png"></img>
+</a> */}
               
               
                </Card>

@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+
 function MenuList(props) {
 
 
@@ -45,10 +46,11 @@ return (
     {
     
    props.menuItems?.map( function(item, index) {
-  
-    return  <Col  className=" col-sm-auto col-md-auto col-lb-auto col-xl-auto col-auto d-flex" > 
-    <MenuItem  id={index} menuItem={item} onDelete={handleClick}  key={index}/>
+    return  <Row  key={item.id} xs="auto" sm="auto" md="auto" lg="auto" xl="auto">
+    <Col> 
+    <MenuItem  id={index} menuItem={item} onDelete={handleClick} />
     </Col>
+    </Row>
   
  
  

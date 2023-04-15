@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import CartItem from './CartItem';
 import { Button } from 'react-bootstrap';
-import { retriveData } from '../../data/products';
-
-
-
-
 
 
 function Cart(props) {
@@ -21,8 +16,7 @@ function Cart(props) {
 useEffect(() => {
 // get all values of retrived data and only select the ones with the props.cart id which is sent up from product.js to productlista nd down int this cart
   if (props.cart?.isInCart === true) {
-    let data = retriveData?.filter((item) => {
-    
+    let data = props.retrivedData?.filter((item) => {
       return item.id === props.cart.id
     })
   
@@ -44,49 +38,13 @@ if (prevalue?.length > 0) {
    setItems(data)
      
   }
-}, [props.cart]) 
+}, [props.cart, props.retriveData]) 
 
 useEffect(() => {
-  console.log("items in cart 47", items);
  props.func(idOfRemoved)
 }, [items])
 
-  // useEffect(() => {
-  // if (newTotalOfItem > 1) {
-  //  // setNewTotalOfItem(newTotalOfItem.pop())
-  
-  // }
-    
-    
-//   }, [newTotal])
-//   useEffect(() => {
-//     setNewTotal(newTotal - newTotalOfItem);
-//     console.log("here", newTotalOfItem);
-//   }, [hasRemoved])
-//   const pull_data = (data) => {
-//    setNewTotal(newTotal + data)
-   
-//     };
-//     const pull_newTotalofItem = (data => {
-// if (newTotalOfItem.length > 0) {
-//   setNewTotalOfItem((prevalue) => {
-//     return [...prevalue, data]
-//   })
-//   if (newTotalOfItem.length === 0) {
-//     setNewTotalOfItem([data]);
-//   }
-// }
-// console.log("pulled", data, total , newTotal);
-//     })
 
-// function remove(anItem) {
-//    console.log("an item", anItem, "items", items);
-//  let data =  items.filter((item) => {
-//     return item.id !== anItem.id
-//   })
-//   console.log("data in cart", data)
-//   setItems(data);
-//   setHasRemoved((hasRemoved)=> !hasRemoved)
 
 
 // }
@@ -95,12 +53,10 @@ const pull_data = (id) => {
 const data = items.filter((item) => {
   return item.id !== id
 })
-console.log("items", data);
 setItems(data)
   };
 
   function changeInTotalValue(price) {
-    console.log("price", price, newTotal);
     setNewTotal(newTotal + price)
   }
 
@@ -164,11 +120,5 @@ setItems(data)
     );
 }
 
-Cart.propTypes = {
-    items: PropTypes.array,
-    total: PropTypes.number,
-    currency: PropTypes.string,
-    removeFromCart: PropTypes.func.isRequired
-}
 
 export default Cart;

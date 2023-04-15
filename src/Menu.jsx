@@ -29,7 +29,7 @@ function Menu(props) {
         image: String,
         model: String
        }]);
-    const [mushimo, setMushimo] = useState([{menuItem:  [],
+    const [mushimono, setMushimono] = useState([{menuItem:  [],
         detail: [], 
         sectionName: "",
         image: String,
@@ -136,13 +136,17 @@ function Menu(props) {
         image: String,
         model: String
         }])
-    var [id, setId] = useState(0)
+  var id = useRef(0)
     const [retriveData, setRetriveData] = useState([])
      
 
 
       useEffect(() => {
-        const data1 =   fetch("http://localhost:8080/loadMenu")
+        
+
+
+
+        const menuData =   fetch("https://lofty-golden-myth.glitch.me/loadMenu")
         .then( res =>  {
      
    return res.json() 
@@ -166,7 +170,7 @@ function Menu(props) {
 
 useEffect(() => {
  
-console.log("retrived data", retriveData);
+
     
   let recoveredMenu = retriveData
   repopulateMenu(retriveData);
@@ -184,7 +188,7 @@ console.log("retrived data", retriveData);
         
 if (props.mealName !== "") {
     populateMenu(props) 
-    console.log("Hello populate menu");
+  
   
 }
        
@@ -205,9 +209,9 @@ if (props.mealName !== "") {
    }, [menu])
     function populateMenu(props) {
 
-        setId(id + 1)
+       id.current ++
         setMenu(preValue => {
-           return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.preview, model: props.model?.preview , id: id, currency: "$"}]
+           return [...preValue, {mealName: props.mealName, bodyText: props.bodyText, price: props.price, section: props.section, image:  props.image?.preview, model: props.model?.preview , id: id.current, currency: "$"}]
            
         });
         switch (props.section) {
@@ -215,12 +219,12 @@ if (props.mealName !== "") {
        
           
             case "Popular-Items":
-               console.log("popular");
+             
                 setPopularItems((preValue) => {
                
                     return [...preValue, {
                         menuItem:  [props.mealName, props.bodyText],
-                        detail: [props.image?.preview, props.model?.preview], price: props.price,  section: "Popular-Items", id: id
+                        detail: [props.image?.preview, props.model?.preview], price: props.price,  section: "Popular-Items", id: id.current
                     }]
                   
                 });
@@ -249,8 +253,8 @@ if (props.mealName !== "") {
                   
                 });
             break;
-            case "Mushimo":
-                setMushimo((preValue) => {
+            case "Mushimono":
+                setMushimono((preValue) => {
                     return    [...preValue,{
                         menuItem:  [props.mealName, props.bodyText],
                         detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Mushimo"
@@ -339,7 +343,7 @@ if (props.mealName !== "") {
             });
         break;
         case "Sushi-Combinations":
-            setAssortedSashimi((preValue) => {
+            setSushiCombinations((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
                     detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Sushi-Combinations"
@@ -405,7 +409,7 @@ if (props.mealName !== "") {
             });
         break;
         case "Utensils":
-            setMushimo((preValue) => {
+            setUtensils((preValue) => {
                 return    [...preValue,{
                     menuItem:  [props.mealName, props.bodyText],
                     detail: [props.image?.preview, props.model?.preview], price: props.price , section: "Utensils"
@@ -440,11 +444,11 @@ if (props.mealName !== "") {
 
     function repopulateMenu(recoveredMenu) {
 
-
+id.current = 0
      
       recoveredMenu?.forEach(element => {
           
-  
+  id.current ++
         switch (element.section) {
 
        
@@ -484,8 +488,8 @@ if (props.mealName !== "") {
                   
                 });
             break;
-            case "Mushimo":
-                setMushimo((preValue) => {
+            case "Mushimono":
+                setMushimono((preValue) => {
                     return    [...preValue,{
                         menuItem:  [element.mealName, element.bodyText],
                         detail: [element.image, element.model], price: element.price , section: "Mushimo"
@@ -574,7 +578,7 @@ if (props.mealName !== "") {
             });
         break;
         case "Sushi-Combinations":
-            setAssortedSashimi((preValue) => {
+            setSushiCombinations((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
                     detail: [element.image, element.model], price: element.price , section: "Sushi-Combinations"
@@ -640,7 +644,7 @@ if (props.mealName !== "") {
             });
         break;
         case "Utensils":
-            setMushimo((preValue) => {
+            setUtensils((preValue) => {
                 return    [...preValue,{
                     menuItem:  [element.mealName, element.bodyText],
                     detail: [element.image, element.model], price: element.price , section: "Utensils"
@@ -674,9 +678,9 @@ if (props.mealName !== "") {
 
  async function handleSet(event) {
 
-  
+ 
 
-    const anotherResponse = await fetch("http://localhost:8080/storedMenu", {
+    const anotherResponse = await fetch("https://lofty-golden-myth.glitch.me/storedMenu", {
         method: "POST",
         mode: "cors",
         headers: {
@@ -687,14 +691,14 @@ if (props.mealName !== "") {
        
 
     })
-  console.log("sent?", menu);
+ 
      props.func(menu)
     
 
 
 
-menu?.length > 0 && localStorage.setItem("Menu", JSON.stringify(menu))
-menu?.length > 0 &&  localStorage.setItem("id", JSON.stringify(id));  
+
+ 
  
 
  }
@@ -751,8 +755,8 @@ function deletePopularItems(id) {
                  })
               })
             }
-            function deleteMushimo(id) {
-                setMushimo(preValue => {
+            function deleteMushimono(id) {
+                setMushimono(preValue => {
                     return preValue.filter((item, index) => {
                     
                             
@@ -970,7 +974,7 @@ setRetriveData([])
     setPopularItems([])
     setcoldDishes([])
     sethotDishes([])
-    setMushimo([])
+    setMushimono([])
     setYakiOnigiri([])
     setDonburi([])
     setRobata([])
@@ -998,7 +1002,7 @@ setRetriveData([])
 <MenuList sectionName="Popular Items" menuItems={popularItems} delete={deletePopularItems}/>
 <MenuList sectionName="Cold Dishes" menuItems={coldDishes} delete={deletecoldDishes}/>
 <MenuList sectionName="Hot Dishes" menuItems={hotDishes} delete={deletehotDishes}/>
-<MenuList sectionName="Mushimo" menuItems={mushimo} delete={deleteMushimo}/>
+<MenuList sectionName="Mushimono" menuItems={mushimono} delete={deleteMushimono}/>
 <MenuList sectionName="Yaki Onigiri"  menuItems={yakiOnigiri} delete={deleteYakiOnigiri}/>
 <MenuList sectionName="Donburi"  menuItems={donburi} delete={deleteDonburi}/>
 <MenuList sectionName="Robata"  menuItems={robata} delete={deleteRobata}/>

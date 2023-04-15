@@ -28,11 +28,11 @@ const [isLoginVis, setIsLoginVis] = useState(false);
         setMenuArray(data)
         };
 function changePassword(changedPassword) {
-  console.log("password", changedPassword, password,);
+
   setStoredPassword(changedPassword);
 }
 function sendUpIsInit(isVisible) {
-  console.log("isVisble", isVisible);
+
 setIsLoginVis(isVisible)
 }
 
