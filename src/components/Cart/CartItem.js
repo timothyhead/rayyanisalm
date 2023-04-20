@@ -13,7 +13,7 @@ useEffect(() => {
 }, [changeInPrice])
 
     useEffect(() => {
-    
+    console.log("here 1");
 
        setChangeInPrice(props.item?.price);
     }, [newPrice, props.item?.price])
@@ -22,6 +22,7 @@ useEffect(() => {
      
 props.func(props.item?.id);
 props.changeInTotalValue(-newPrice);
+console.log("here 2");
 
 
 
@@ -51,6 +52,7 @@ function decrement() {
         <div className="cart-item">
             <div>
                <Button variant='danger' size="lg"  onClick={handleClick}>X</Button>
+               <h1>Hello</h1>
                 <span className="cart-item__name">{props.item?.mealName}</span>
             </div>
             <div className="cart-item__price">{newPrice}</div>

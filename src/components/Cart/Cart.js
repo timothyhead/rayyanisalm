@@ -16,10 +16,10 @@ useEffect(() => {
 // get all values of retrived data and only select the ones with the props.cart id which is sent up from product.js to productlista nd down int this cart
 
 if (isinit.current === true) {
-  console.log("false");
+
 isinit.current = false
 } else {
-  console.log("true");
+ 
   if (props.cart?.isInCart === true) {
     let data = props.retrivedData?.filter((item) => {
       return item.id === props.cart.id
@@ -73,7 +73,7 @@ const data = items.filter((item) => {
   return item.id !== id
 })
 setItems(data)
-console.log("data", data);
+
   };
 
   function changeInTotalValue(price) {
