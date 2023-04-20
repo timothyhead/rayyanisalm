@@ -75,6 +75,9 @@ return res.json()
 
  }, [])
  useEffect(() => {
+console.log("retd id", retrivedData);
+ }, [retrivedData])
+ useEffect(() => {
     setIdOfRemoved(props.idOfRemoved)
  }, [props.idOfRemoved])
 

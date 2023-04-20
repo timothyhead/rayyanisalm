@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import CartItem from './CartItem';
 import { Button } from 'react-bootstrap';
 
@@ -7,24 +7,35 @@ function Cart(props) {
   const [toggle, setToggle] = useState(false)
   const [newTotal, setNewTotal] = useState(0)
   const [items, setItems] = useState([]);
+  const [newItems, setNewItems] = useState([]);
   const [idOfRemoved, setIdOfRemoved] = useState();
+  const isinit = useRef(false)
 
 
 useEffect(() => {
 // get all values of retrived data and only select the ones with the props.cart id which is sent up from product.js to productlista nd down int this cart
+
+if (isinit.current === true) {
+  console.log("false");
+isinit.current = false
+} else {
+  console.log("true");
   if (props.cart?.isInCart === true) {
     let data = props.retrivedData?.filter((item) => {
       return item.id === props.cart.id
     })
-  
-setItems((prevalue) => {
-if (prevalue?.length > 0) {
- return [...prevalue, ...data]
-  } else {
-    return data
-  }
 
-})
+  isinit.current = true
+  setNewItems((prevalue) => {
+    if (prevalue?.length > 0) {
+      return [...prevalue, ...data]
+       } else {
+         return data
+       }
+      
+  })
+
+
   }
   // get items remove item with props.cart id and set items with remaing items
   if (props.cart?.isInCart === false) {
@@ -32,14 +43,25 @@ if (prevalue?.length > 0) {
     
       return item.id !== props.cart.id
     })
-   setItems(data)
+    isinit.current = true
+   setNewItems(data)
      
   }
+}
+
 }, [props.cart, props.retriveData, props.retrivedData, items]) 
 
 useEffect(() => {
+  if (isinit.current === true) {
+  setItems(newItems)
+
+
+  }
+},[ newItems])
+
+useEffect(() => {
  props.func(idOfRemoved)
-}, [items, idOfRemoved, props])
+}, [idOfRemoved, props])
 
 
 
@@ -51,6 +73,7 @@ const data = items.filter((item) => {
   return item.id !== id
 })
 setItems(data)
+console.log("data", data);
   };
 
   function changeInTotalValue(price) {

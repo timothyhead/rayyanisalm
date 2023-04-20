@@ -27,7 +27,7 @@ props.delete(id)
 if  (isinit.current === true) {
     props.menuItems.shift();
      isinit.current = false;
-      console.log(isinit, "isinit");
+    
 }
  
 return (

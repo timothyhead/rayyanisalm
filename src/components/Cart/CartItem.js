@@ -10,7 +10,7 @@ function CartItem( props) {
 
 useEffect(() => {
     props.changeInTotalValue(changeInPrice);
-}, [changeInPrice, props])
+}, [changeInPrice])
 
     useEffect(() => {
     

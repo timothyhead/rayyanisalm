@@ -683,13 +683,13 @@ id.current = 0
  async function handleSet(event) {
 
  
-
+console.log("menu", menu);
   await fetch("https://lofty-golden-myth.glitch.me/storedMenu", {
         method: "POST",
-        mode: "cors",
         headers: {
               "Access-Control-Allow-Methods": 'OPTIONS,POST,GET', // this states the allowed methods
-            "Content-Type": "application/json" // this shows the expected content type
+            "Content-Type": "application/json", // this shows the expected content type
+            "Access-Control-Allow-Origin": "https://lofty-golden-myth.glitch.me" 
         },
         body: JSON.stringify({"menu" : menu}),
        

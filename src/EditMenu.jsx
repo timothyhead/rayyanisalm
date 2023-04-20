@@ -190,9 +190,9 @@ function handlePassowordChange() {
 <Form.Label>Enter price:</Form.Label>
 <Form.Control   type="number" value={price}  onChange={(e) => setPrice(e.target.value)}/>
 <Form.Label>Select 3d model file</Form.Label>
-<Form.Control   type="file" name="file"  onChange={changeHandler2}/>
+<Form.Control   type="file" name="file" value={changeHandler2}  onChange={changeHandler2}/>
 <Form.Label>Select thumbnail image file</Form.Label>
-<Form.Control   type="file" name="file"  onChange={changeHandler1}/>
+<Form.Control   type="file" name="file" value={changeHandler1} onChange={changeHandler1}/>
 
 
 
