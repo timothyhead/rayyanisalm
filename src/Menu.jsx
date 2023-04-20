@@ -126,7 +126,7 @@ function Menu(props) {
         image: String,
         model: String
        }]);   
-       const [aClass, setAClass]  = useState()
+
   
       const ref = useRef(null);
 
@@ -138,6 +138,7 @@ function Menu(props) {
         }])
   var id = useRef(0)
     const [retriveData, setRetriveData] = useState([])
+    const [add, setAdd] = useState(false);
      
 
 
@@ -146,7 +147,7 @@ function Menu(props) {
 
 
 
-        const menuData =   fetch("https://lofty-golden-myth.glitch.me/loadMenu")
+     fetch("https://lofty-golden-myth.glitch.me/loadMenu")
         .then( res =>  {
      
    return res.json() 
@@ -179,21 +180,23 @@ useEffect(() => {
    
 }, [retriveData])
 
-
+useEffect(() => {
+setAdd(true)
+}, [props.add]) ;
+useEffect(() => {
+setAdd(false)
+}, [])
 
    useEffect(() => {
 
-   setAClass("silk corner flex-container-vertical border-red edit-menus-menu-div") 
-
-        
-if (props.mealName !== "") {
-    populateMenu(props) 
-  
-  
-}
+    
+    if (props.mealName !== "" && add === true) {
+        populateMenu(props) 
+        setAdd(false)
+    }
        
  
-   }, [props.add], [props])
+   }, [add, props])
 
    useEffect(() => {
    
@@ -664,6 +667,7 @@ id.current = 0
                             
                          }];
             });
+            break
         default: 
         break
     
@@ -680,7 +684,7 @@ id.current = 0
 
  
 
-    const anotherResponse = await fetch("https://lofty-golden-myth.glitch.me/storedMenu", {
+  await fetch("https://lofty-golden-myth.glitch.me/storedMenu", {
         method: "POST",
         mode: "cors",
         headers: {

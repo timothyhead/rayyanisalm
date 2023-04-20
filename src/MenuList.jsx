@@ -1,7 +1,6 @@
 
-import React, { useEffect} from "react";
+import React, { useRef} from "react";
 import MenuItem from "./MenuItem";
-import Stack from 'react-bootstrap/Stack';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -9,13 +8,13 @@ import Container from 'react-bootstrap/Container';
 
 function MenuList(props) {
 
+    var isinit = useRef(true)
 
+//   useEffect(() => {
 
-  useEffect(() => {
+//       props.menuItems.shift()
 
-      props.menuItems.shift()
-
-  }, [props.menuItem])
+//   }, [ props.menuItems])
 
 function handleClick(id) {
 
@@ -25,14 +24,21 @@ props.delete(id)
 
 }
 
-
+if  (isinit.current === true) {
+    props.menuItems.shift();
+     isinit.current = false;
+      console.log(isinit, "isinit");
+}
  
 return (
     <div>
     <h4 className="centre">{props.sectionName}</h4>
   
     <ul>
-
+{
+    
+ 
+}
   
     <Container>
 <Row>
@@ -41,14 +47,15 @@ return (
 
     
 
+ 
 
  
     {
     
    props.menuItems?.map( function(item, index) {
     return  <Row  key={item.id} xs="auto" sm="auto" md="auto" lg="auto" xl="auto">
-    <Col> 
-    <MenuItem  id={index} menuItem={item} onDelete={handleClick} />
+    <Col  key={item.id}> 
+    <MenuItem  key={item.id} id={index} menuItem={item} onDelete={handleClick} />
     </Col>
     </Row>
   

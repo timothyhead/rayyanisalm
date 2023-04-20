@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 
@@ -7,19 +6,17 @@ import { Button } from 'react-bootstrap';
 function CartItem( props) {
     const [numItems, setNumItems] = useState(1)// { price, onClick, currency , func, totalValue},
     const [newPrice, setNewPrice] = useState(props.item?.price)
-    const [isIncreasing, setIsIncreasing] = useState(true)
-    const [id, setId] = useState();
     const [changeInPrice, setChangeInPrice] = useState(props.item?.price)
-    var isFirstPrice = false
+
 useEffect(() => {
     props.changeInTotalValue(changeInPrice);
-}, [])
+}, [changeInPrice, props])
 
     useEffect(() => {
     
 
        setChangeInPrice(props.item?.price);
-    }, [newPrice])
+    }, [newPrice, props.item?.price])
 
     function handleClick() {
      
@@ -31,14 +28,14 @@ props.changeInTotalValue(-newPrice);
     }
  // +/- buttons  
 function increment() {
-   setIsIncreasing(true)
+
     setNumItems(numItems + 1);
      setNewPrice(newPrice + props.item?.price);
      props.changeInTotalValue(changeInPrice);
 }
 function decrement() {
     if (numItems > 1) {
-       setIsIncreasing(false)
+    
         setNumItems(numItems - 1);
          setNewPrice(newPrice - props.item?.price);
          props.changeInTotalValue(-changeInPrice);

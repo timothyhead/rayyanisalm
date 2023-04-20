@@ -1,12 +1,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import { Card, Row, Col, Button, Stack } from "react-bootstrap";
-import cube from "./Untitled.usdz"
-import { Buffer } from "buffer";
-
-
-
+import { Card, Button} from "react-bootstrap";
 
 
 
@@ -24,12 +19,7 @@ const model = detailArray[1];
 const price = menuItems.price;
 
 const [data, setData] = useState();
-const [dt, setDt] = useState();
-
-
-
-var aimage = new Image();
-
+const [modelData, setModelData] = useState();
  
 
 function handleClick() {
@@ -49,9 +39,9 @@ useEffect(() => {
 
     useEffect(() => {
         if (data) {
-setDt(URL.createObjectURL(data) + "#callToAction=Add%20to%20cart&checkoutTitle=" + MealName + "&checkoutSubtitle=enjoy&price=£4.00");
+setModelData(URL.createObjectURL(data) + "#callToAction=Add%20to%20cart&checkoutTitle=" + MealName + "&checkoutSubtitle=enjoy&price=" + price + "usd");
         }
-    }, [data])                                             
+    }, [data, MealName, price])                                             
 
 
   
@@ -60,7 +50,7 @@ setDt(URL.createObjectURL(data) + "#callToAction=Add%20to%20cart&checkoutTitle="
 
         <div>
 
-<h1>Hello</h1>
+
  <Card className="bottom-padding">
 
  <Card.Body>
@@ -70,7 +60,7 @@ setDt(URL.createObjectURL(data) + "#callToAction=Add%20to%20cart&checkoutTitle="
  
 
 </Card.Body>
-<a rel="ar" id="ar-link" href={dt}> 
+<a rel="ar" id="ar-link" href={modelData}> 
     <Card.Img variant="bottom"  className="image-size" src={image} alt="No Image">
     </Card.Img>
     </a>

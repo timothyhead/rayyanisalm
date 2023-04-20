@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import CartItem from './CartItem';
 import { Button } from 'react-bootstrap';
 
@@ -7,8 +6,6 @@ import { Button } from 'react-bootstrap';
 function Cart(props) {
   const [toggle, setToggle] = useState(false)
   const [newTotal, setNewTotal] = useState(0)
-  const [newTotalOfItem, setNewTotalOfItem] = useState([]);
-  const [hasRemoved, setHasRemoved] = useState();
   const [items, setItems] = useState([]);
   const [idOfRemoved, setIdOfRemoved] = useState();
 
@@ -38,11 +35,11 @@ if (prevalue?.length > 0) {
    setItems(data)
      
   }
-}, [props.cart, props.retriveData]) 
+}, [props.cart, props.retriveData, props.retrivedData, items]) 
 
 useEffect(() => {
  props.func(idOfRemoved)
-}, [items])
+}, [items, idOfRemoved, props])
 
 
 

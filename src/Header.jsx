@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import {BrowserRouter as Router, Link, Routes,  Route, Outlet, useNavigate}  from "react-router-dom"
+import React, { useState } from "react"
+import {BrowserRouter as Router, Link, Routes,  Route, Outlet }  from "react-router-dom"
 import EditMenu from "./EditMenu"
 import PublicMenu from "./PublicMenu"
 import Form from 'react-bootstrap/Form';
@@ -13,20 +13,7 @@ const [isLoginVis, setIsLoginVis] = useState(false);
 
 
 
-  var [aMenuArray, setMenuArray] = useState([{
-    mealName: "",
-   bodyText: "",
-   image: "",
-   model: "",
-   detailText: "",
-   price: "",
-    section: ""
-            
-         }]);
-        
-         const pull_data = (data) => {
-        setMenuArray(data)
-        };
+ 
 function changePassword(changedPassword) {
 
   setStoredPassword(changedPassword);
@@ -60,7 +47,7 @@ return(
        <Outlet />
      </header>
      <Routes>
-        <Route path="/edit-menu" element={<EditMenu func={pull_data} passUpPassword={changePassword} sendUpIsInit={sendUpIsInit} />}  />
+        <Route path="/edit-menu" element={<EditMenu  passUpPassword={changePassword} sendUpIsInit={sendUpIsInit} />}  />
         <Route path="/public-menu" element={<PublicMenu sendUpIsInit={sendUpIsInit}/>} />
      </Routes>
 </Router>

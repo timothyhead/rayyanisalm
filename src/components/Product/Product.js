@@ -1,12 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { Card, CardGroup, Col, Container, Row } from 'react-bootstrap';
-
-const myImage = null
-var count = 0
-var isinit = false
-
+import { Card} from 'react-bootstrap';
     
 
 function Product(props) {
@@ -14,21 +8,48 @@ function Product(props) {
    
   
     
-        const { mealName, price, bodyText, image,  model, id, func, cart} = props;
+        const { mealName, price, bodyText, image,  model, id, func } = props;
 
         const [isInCart, setIsinCart] = useState(false);
 
-        const [isSet, SetIsSet] = useState(false);
-      
+        const [data, setData] = useState();
 
-     
+        const [modelData, setModelData] = useState();
+
+        
+        useEffect(() => {
+            let url = model
+            fetch(url)
+            .then(res => res.blob())
+            .then(y => setData(y))
+        }, [model]);
+
+        useEffect(() => {
+            if (data) {
+                setModelData(URL.createObjectURL(data) + "#callToAction=Add%20to%20cart&checkoutTitle=" + mealName + "&checkoutSubtitle=enjoy&price=" + price);
+            }
+        }, [data, mealName, price]);
+
+useEffect(() => {
+    if (document.getElementById(id) !== null) {
+        const linkElement = document.getElementById(id);
+        linkElement.addEventListener("message", function (event) {  
+            if (event.data === "_apple_ar_quicklook_button_tapped")  {
+                // Handle the user tap.   
+               
+                setIsinCart(isInCart => !isInCart)
+            }
+        }, false); 
+    }
+}, [id])
+        
      
        useEffect(() => {
 if (props.idOfRemoved === id) {
     setIsinCart(false)
 }
     
-       }, [props.idOfRemoved])
+       }, [props.idOfRemoved, id])
 
         const handleClick = () => {
           
@@ -52,7 +73,7 @@ if (props.idOfRemoved === id) {
             })
         }
 
-      }, [isInCart])
+      }, [isInCart, func, id])
    
    
         return (
@@ -73,14 +94,12 @@ if (props.idOfRemoved === id) {
                <Button variant={isInCart ? "danger" : "outline-primary"}     className={isInCart ? "no-transparency" : "transparency"}
                             onClick={handleClick}
                         > {isInCart ? 'Remove' : 'Add to cart'}</Button>
-            {/* $(model)#applePayButtonType=plain */}
-               <a rel="ar"  href={model}>
+          
+               <a rel="ar" id={id} href={modelData}>
          <Card.Img className='image-size' variant='bottom' src={image}></Card.Img>  
-           {/* // <img  src={image}></img> */}
+         
                </a>
-               {/* <a rel="ar" id="ApplePay" href="alarm‑clock.usdz#applePayButtonType=plain&checkoutTitle=Retro%20Alarm%20Clock&checkoutSubtitle=With%20built-in%20FM%20tuner&price=$92.50">
-    <img src="alarm-clock-thumbnail.png"></img>
-</a> */}
+   
               
               
                </Card>

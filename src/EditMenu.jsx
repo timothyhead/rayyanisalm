@@ -46,7 +46,7 @@ useEffect(() => {
  setIsClicked(false)
  props.sendUpIsInit(false)
 
-  }, [])
+  }, [props])
  
 
 

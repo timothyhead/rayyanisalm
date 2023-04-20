@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 import Product from '../Product';
-import { Container, Row, Col, Button, Stack} from 'react-bootstrap';
-import Cart from '../Cart'
-
-
-
+import { Container, Row, Col } from 'react-bootstrap';
 
 const sections = [{sectionName: "Popular-Items",
                      ids: "goto1"            },
@@ -47,7 +43,6 @@ const sections = [{sectionName: "Popular-Items",
                      {sectionName: "Ramen",
                      ids: "goto19"            }
                     ]
-var element_to_scroll_to = document.getElementById('anchorName2');
 
                    // products
 const ProductList = ( props ) => {
@@ -57,17 +52,9 @@ const ProductList = ( props ) => {
   
 
 
-
-
-
-//    function isRemoveFromCart(obj) {
-
-// setCart(obj)
-
-//    }
 // get data from backend to load product list
  useEffect(() => {
-    const data1 =   fetch("https://lofty-golden-myth.glitch.me/loadMenu")
+   fetch("https://lofty-golden-myth.glitch.me/loadMenu")
     .then( res =>  {
  
 return res.json() 
@@ -89,12 +76,11 @@ return res.json()
  }, [])
  useEffect(() => {
     setIdOfRemoved(props.idOfRemoved)
-    console.log("id of removed", props.idOfRemoved);
  }, [props.idOfRemoved])
 
  useEffect(() => {
 props.pull_retrivedData(retrivedData)
- }, [retrivedData])
+ }, [retrivedData, props])
 
 // pull data from product.js
 function pull_data(data) {

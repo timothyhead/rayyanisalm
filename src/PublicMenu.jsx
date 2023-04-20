@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 
@@ -6,23 +6,18 @@ import Cart from "./components/Cart";
 
 
 function PublicMenu(props) {
-    const [password, setPassword] = useState();
-    const  [storedPassword, setStoredPassword] = useState("123456");
-    const [isLoginVis, setIsLoginVis] = useState(false);
+  
     const [cart, setCart] = useState();
     const [idOfRemoved, setIdOfRemoved] = useState();
     const  [retrivedData, setRetrivedData] = useState();
 
   useEffect(() => {
     props.sendUpIsInit(true)
-  }, [])
+  }, [props])
 
-    function changePassword(changedPassword) {
-      
-        setStoredPassword(changedPassword)
-      }
+   
       function pull_data_product(data) {
-        console.log("data", data);
+     
         setCart(data)
       }
       // pull data from cart.js
@@ -31,7 +26,7 @@ function pull_idOfRemoved(id) {
   
   }
  function pull_retrivedData(data) {
-    console.log("retrived data", retrivedData);
+
 setRetrivedData(data);
  }
      
