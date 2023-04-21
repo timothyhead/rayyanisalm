@@ -61,13 +61,13 @@ if (props.idOfRemoved === id) {
                 isInCart: true,
                 id: id
             })
-            console.log("is in cart true");
+          
         } else {
           func({
                 isInCart: false,
                 id: id
             })
-            console.log("is in cart false");
+          
         }
 // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [isInCart, id])

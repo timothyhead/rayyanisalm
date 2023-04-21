@@ -9,55 +9,39 @@ function Cart(props) {
   const [items, setItems] = useState([]);
   const [newItems, setNewItems] = useState([]);
   const [idOfRemoved, setIdOfRemoved] = useState();
-  const isinit = useRef(false)
+
 
  
+
+
 useEffect(() => {
-// get all values of retrived data and only select the ones with the props.cart id which is sent up from product.js to productlista nd down int this cart
-
-if (isinit.current === true) {
-
-isinit.current = false
-} else {
- 
-  if (props.cart?.isInCart === true) {
-    let data = props.retrivedData?.filter((item) => {
-      return item.id === props.cart.id
-    })
-
-  isinit.current = true
-  setNewItems((prevalue) => {
-    if (prevalue?.length > 0) {
-      return [...prevalue, ...data]
-       } else {
-         return data
-       }
-      
-  })
-
-
-  }
-  // get items remove item with props.cart id and set items with remaing items
-  if (props.cart?.isInCart === false) {
-    let data = items?.filter((item) => {
+  // get all values of retrived data and only select the ones with the props.cart id which is sent up from product.js to productlista nd down int this cart
+    if (props.cart?.isInCart === true) {
+      let data = props.retrivedData?.filter((item) => {
+        return item.id === props.cart.id
+      })
     
-      return item.id !== props.cart.id
-    })
-    isinit.current = true
-   setNewItems(data)
-     
-  }
-}
+  setItems((prevalue) => {
+  if (prevalue?.length > 0) {
+   return [...prevalue, ...data]
+    } else {
+      return data
+    }
+  
+  })
+    }
+    // get items remove item with props.cart id and set items with remaing items
+    if (props.cart?.isInCart === false) {
+      let data = items?.filter((item) => {
+      
+        return item.id !== props.cart.id
+      })
+     setItems(data)
+       
+    }
+  }, [props.cart, props.retriveData]) 
 
-}, [props.cart, props.retriveData, props.retrivedData, items]) 
 
-useEffect(() => {
-  if (isinit.current === true) {
-  setItems(newItems)
-
-
-  }
-},[ newItems])
 
 useEffect(() => {
  props.func(idOfRemoved)
@@ -77,7 +61,7 @@ setItems(data)
   };
 
   function changeInTotalValue(price) {
-    console.log(price, "price");
+  
     setNewTotal(newTotal + price)
   }
 

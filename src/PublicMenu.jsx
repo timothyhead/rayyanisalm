@@ -7,10 +7,11 @@ import Cart from "./components/Cart";
 
 function PublicMenu(props) {
   
-    const [cart, setCart] = useState();
+
     const [isInCart, setIsinCart] = useState();
     const [idOfRemoved, setIdOfRemoved] = useState();
     const  [retrivedData, setRetrivedData] = useState();
+    const [cart, setCart] = useState();
 
   useEffect(() => {
     props.sendUpIsInit(true)
@@ -18,8 +19,8 @@ function PublicMenu(props) {
 
    
       function pull_data_product(data) {
-     console.log(("public menu data" , data));
-       // setCart(data)
+
+        setCart(data)
        setIsinCart(data)
       }
       // pull data from cart.js
