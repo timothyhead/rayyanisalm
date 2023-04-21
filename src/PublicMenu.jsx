@@ -8,7 +8,7 @@ import Cart from "./components/Cart";
 function PublicMenu(props) {
   
     const [cart, setCart] = useState();
-    const [isInCart, setIsinCart = useState();
+    const [isInCart, setIsinCart] = useState();
     const [idOfRemoved, setIdOfRemoved] = useState();
     const  [retrivedData, setRetrivedData] = useState();
 

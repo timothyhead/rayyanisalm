@@ -8,7 +8,7 @@ function CartItem( props) {
     const [newPrice, setNewPrice] = useState(props.item?.price)
     const [changeInPrice, setChangeInPrice] = useState(props.item?.price)
 useEffect(() => {
-    console.log( "props.item.isIncart", props.cart);
+    console.log("props.item.isIncart", props.cart);
 }, [ props.cart])
 useEffect(() => {
     props.changeInTotalValue(changeInPrice);
