@@ -15,10 +15,10 @@ useEffect(() => {
 }, [newPrice])
 
     useEffect(() => {
-    console.log("here 1");
+    console.log("here 1", props.item.isIncart);
 
        setChangeInPrice(props.item?.price);
-    }, [props.item?.price, props.item.id])
+    }, [props.item?.price, props.item.isIncart])
 
     function handleClick() {
      
