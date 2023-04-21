@@ -8,8 +8,8 @@ function CartItem( props) {
     const [newPrice, setNewPrice] = useState(props.item?.price)
     const [changeInPrice, setChangeInPrice] = useState(props.item?.price)
 useEffect(() => {
-    console.log("props.item.isIncart", props.cart);
-}, [ props.cart])
+    console.log("props.item.isIncart", props);
+}, [ props])
 useEffect(() => {
     props.changeInTotalValue(changeInPrice);
     console.log("change in price");
@@ -57,7 +57,7 @@ function decrement() {
         <div className="cart-item">
             <div>
                <Button variant='danger' size="lg"  onClick={handleClick}>X</Button>
-               <h1>Hello world</h1>
+               {/* <h1>Hello world</h1> */}
                 <span className="cart-item__name">{props.item?.mealName}</span>
             </div>
             <div className="cart-item__price">{newPrice}</div>
