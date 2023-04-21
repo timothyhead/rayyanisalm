@@ -16,9 +16,7 @@ function Product(props) {
 
         const [modelData, setModelData] = useState();
 
-        useEffect(()=> {
-            console.log("id", id);
-        }, [])
+       
         useEffect(() => {
             let url = model
             fetch(url)
@@ -74,7 +72,7 @@ if (props.idOfRemoved === id) {
                 id: id
             })
         }
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
       }, [isInCart, id])
    
    

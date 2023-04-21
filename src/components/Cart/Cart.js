@@ -77,6 +77,7 @@ setItems(data)
   };
 
   function changeInTotalValue(price) {
+    console.log(price, "price");
     setNewTotal(newTotal + price)
   }
 
