@@ -11,7 +11,7 @@ function Cart(props) {
   const [idOfRemoved, setIdOfRemoved] = useState();
   const isinit = useRef(false)
 
-
+ 
 useEffect(() => {
 // get all values of retrived data and only select the ones with the props.cart id which is sent up from product.js to productlista nd down int this cart
 
@@ -95,7 +95,7 @@ setItems(data)
                         {items?.length > 0 && (
                             <div className="cart__body">
                                 {items?.map(item => (
-                                    <CartItem key={item.id} item={item}  func={pull_data}  changeInTotalValue={changeInTotalValue} />
+                                    <CartItem key={item.id} item={item} cart{...props.cart} func={pull_data}  changeInTotalValue={changeInTotalValue} />
                                 ))}
                             </div>
                         )}

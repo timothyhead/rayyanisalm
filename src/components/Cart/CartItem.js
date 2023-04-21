@@ -8,13 +8,13 @@ function CartItem( props) {
     const [newPrice, setNewPrice] = useState(props.item?.price)
     const [changeInPrice, setChangeInPrice] = useState(props.item?.price)
 useEffect(() => {
-    console.log( "props.item.isIncart", props.item);
+    console.log( "props.item.isIncart", props.cart);
 }, [])
 useEffect(() => {
     props.changeInTotalValue(changeInPrice);
     console.log("change in price");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [newPrice])
+}, [newPrice, props.cart])
 
     useEffect(() => {
     console.log("here 1", props.item.isIncart);
@@ -57,7 +57,7 @@ function decrement() {
         <div className="cart-item">
             <div>
                <Button variant='danger' size="lg"  onClick={handleClick}>X</Button>
-               <h1>Hello world</h1>
+               {/* <h1>Hello world</h1> */}
                 <span className="cart-item__name">{props.item?.mealName}</span>
             </div>
             <div className="cart-item__price">{newPrice}</div>
