@@ -51,11 +51,6 @@ if (props.idOfRemoved === id) {
     
        }, [props.idOfRemoved, id])
 
-        const handleClick = () => {
-          
-    setIsinCart(isInCart => !isInCart)
-           
-        }
       
         
        
@@ -74,6 +69,12 @@ if (props.idOfRemoved === id) {
         }
 // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [isInCart, id])
+      const handleClick = () => {
+          
+        setIsinCart(isInCart => !isInCart)
+               
+            }
+          
    
    
         return (

@@ -10,6 +10,7 @@ function CartItem( props) {
 
 useEffect(() => {
     props.changeInTotalValue(changeInPrice);
+    console.log("change in price");
     // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [newPrice])
 
@@ -17,7 +18,7 @@ useEffect(() => {
     console.log("here 1");
 
        setChangeInPrice(props.item?.price);
-    }, [props.item?.price])
+    }, [props.item?.price, props.item.id])
 
     function handleClick() {
      
@@ -30,12 +31,13 @@ console.log("here 2");
     }
  // +/- buttons  
 function increment() {
-
+console.log("+/-");
     setNumItems(numItems + 1);
      setNewPrice(newPrice + props.item?.price);
      props.changeInTotalValue(changeInPrice);
 }
 function decrement() {
+    console.log("+/-");
     if (numItems > 1) {
     
         setNumItems(numItems - 1);
