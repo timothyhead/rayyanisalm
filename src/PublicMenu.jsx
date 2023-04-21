@@ -8,6 +8,7 @@ import Cart from "./components/Cart";
 function PublicMenu(props) {
   
     const [cart, setCart] = useState();
+    const [isInCart, setIsinCart = useState();
     const [idOfRemoved, setIdOfRemoved] = useState();
     const  [retrivedData, setRetrivedData] = useState();
 
@@ -17,8 +18,9 @@ function PublicMenu(props) {
 
    
       function pull_data_product(data) {
-     
-        setCart(data)
+     console.log(("public menu data" , data));
+       // setCart(data)
+       setIsinCart(data)
       }
       // pull data from cart.js
 function pull_idOfRemoved(id) {
@@ -44,7 +46,7 @@ setRetrivedData(data);
             <ProductList productData={pull_data_product} idOfRemoved={idOfRemoved} cart={cart} pull_retrivedData={pull_retrivedData}/>
         </div>
         <div className="col-md-4">
-        <Cart  className="cart-div" cart={cart} func={pull_idOfRemoved} retrivedData={retrivedData}/>
+        <Cart  className="cart-div" cart={isInCart} func={pull_idOfRemoved} retrivedData={retrivedData}/>
         </div>
     </div>
 
